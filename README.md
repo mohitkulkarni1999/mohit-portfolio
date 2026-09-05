@@ -130,8 +130,54 @@ The backend serves the built `frontend/dist`, so `npm start` in `backend` serves
         └── dashboard/        # Admin panel (all managers)
 ```
 
+## Deploying to Vercel + Supabase
+
+The project is configured for **multi-service deployment** on Vercel
+(frontend web service + backend web service) with **Supabase** as the managed
+PostgreSQL database.
+
+### 1. Create the Supabase database
+
+1. Create a project at [supabase.com](https://supabase.com) and note:
+   - **Database connection string** (Supabase Dashboard → Project Settings → Database → Connection string → URI): `postgresql://postgres:[PASSWORD]@db.[REF].supabase.co:6543/postgres`
+   - **JWT_SECRET**: any long random string.
+2. Run the schema in the **SQL Editor**:
+   ```sql
+   -- paste the contents of backend/src/db/schema.sql into the SQL Editor and Run
+   ```
+3. Create the admin user + default settings. Run this in the SQL Editor
+   (replace `admin123` with a strong password):
+   ```sql
+   INSERT INTO users (username, password)
+   VALUES ('admin', '$2b$10$7EqJtq98hPqEX7fNZaFWoO5Ztz2y8g6M0NSw1X6XN0X1d0y2qyD9y'); -- bcrypt hash of 'admin123'
+   ```
+   > Note: `db:seed.js` seeds sample content and `db:init.js` creates the admin
+   > user. To seed sample data, run `npm run db:seed` locally with
+   > `DATABASE_URL` set to your Supabase connection string.
+
+### 2. Deploy on Vercel
+
+`vercel.json` at the repo root defines the multi-service layout and routes
+`/api/*` to the backend and everything else to the frontend.
+
+Set these **environment variables** in Vercel → Project → Settings → Environment Variables:
+
+| Variable | Value |
+|----------|-------|
+| `DATABASE_URL` | your Supabase connection URI |
+| `JWT_SECRET` | a long random secret string |
+| `CORS_ORIGIN` | your frontend URL, e.g. `https://mohit-portfolio.vercel.app` |
+
+Then **Deploy** — Vercel builds the frontend (Vite) and backend (Express) as
+separate web services automatically.
+
+### 3. Log in
+- URL: `https://<your-project>.vercel.app/dashboard`
+- Username `admin`, password `admin123` (or whatever you hashed above).
+  **Change it immediately** via Dashboard → Security.
+
 ## Security Notes
 - Admin password hashing with bcrypt.
 - JWT auth on all write routes; public read routes are open.
-- Update `JWT_SECRET` in `backend/.env` before going live.
+- Update `JWT_SECRET` in `backend/.env` (or Vercel env) before going live.
 - Change the default password immediately.
