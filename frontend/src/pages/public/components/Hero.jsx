@@ -24,7 +24,7 @@ export default function Hero({ profile, settings }) {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-28">
-      <div className="container-custom relative grid lg:grid-cols-2 gap-12 items-center py-16 w-full">
+      <div className="container-custom relative grid lg:grid-cols-2 gap-10 lg:gap-12 items-center py-12 lg:py-16 w-full">
         <div>
           <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-faint mb-6">
             <span className="border border-ink/40 px-2.5 py-1">SHEET 01</span>

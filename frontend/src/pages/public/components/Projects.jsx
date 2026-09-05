@@ -25,7 +25,7 @@ export default function Projects({ settings }) {
         />
 
         {featured.length > 0 && (
-          <div className="mt-14 grid lg:grid-cols-2 gap-6">
+          <div className="mt-10 sm:mt-14 grid lg:grid-cols-2 gap-6">
             {featured.slice(0, 4).map((project, i) => (
               <div key={project.id} className={`card border-2 border-ink/70 shadow-card p-0 group flex flex-col ${i % 2 === 1 ? 'lg:mt-12' : ''}`}>
                 <div className="relative h-52 overflow-hidden border-b-2 border-ink/70">

@@ -11,7 +11,7 @@ export default function Stats() {
   if (!stats.length) return null;
 
   return (
-    <section id="stats" className="relative py-14">
+    <section id="stats" className="relative py-10 sm:py-14">
       <div className="container-custom relative">
         <div className="card border-2 border-ink/70 shadow-card p-0">
           <div className="flex items-center justify-between px-4 py-2.5 bg-surface-900 border-b-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink-soft">

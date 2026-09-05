@@ -35,7 +35,7 @@
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   .section-pad {
-    @apply py-20 sm:py-24;
+    @apply py-12 sm:py-24;
   }
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-500 text-ink font-mono font-bold uppercase tracking-wider text-xs rounded-none border border-ink/70 shadow-glow transition-transform duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 disabled:opacity-50 disabled:pointer-events-none;

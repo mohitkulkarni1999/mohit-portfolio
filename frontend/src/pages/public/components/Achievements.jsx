@@ -22,7 +22,7 @@ export default function Achievements({ settings }) {
           subtitle={settings.section_achievements_subtitle}
         />
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-10 sm:mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((a, i) => (
             <div key={a.id} className="card border-2 border-ink/70 shadow-card p-6 group">
               <div className="flex items-center gap-3 mb-4">

@@ -29,7 +29,7 @@ export default function Tools({ settings }) {
           subtitle={settings.section_tools_subtitle}
         />
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-10 sm:mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {Object.entries(grouped).map(([cat, items]) => (
             <div key={cat} className="card border-2 border-ink/70 shadow-card p-0">
               <div className="px-5 py-3 bg-surface-900 border-b-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink-soft flex items-center justify-between">

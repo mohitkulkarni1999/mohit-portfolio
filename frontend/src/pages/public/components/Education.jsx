@@ -21,7 +21,7 @@ export default function Education({ settings }) {
           subtitle={settings.section_education_subtitle}
         />
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-10 sm:mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((edu, i) => (
             <div key={edu.id} className="card relative border-2 border-ink/70 shadow-card p-0 flex flex-col">
               <span className="absolute -top-2 -left-2 text-primary-500" aria-hidden><FiPlus size={14} /></span>

@@ -22,7 +22,7 @@ export default function Services({ settings }) {
           subtitle={settings.section_services_subtitle}
         />
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-10 sm:mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => (
             <div key={service.id} className="card border-2 border-ink/70 shadow-card p-0 group flex flex-col">
               <div className="flex items-center justify-between px-5 py-3 bg-surface-900 border-b-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink-faint">

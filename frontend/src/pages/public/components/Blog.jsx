@@ -24,7 +24,7 @@ export default function Blog({ settings }) {
           subtitle={settings.section_blog_subtitle}
         />
 
-        <div className="mt-14 max-w-3xl mx-auto">
+        <div className="mt-10 sm:mt-14 max-w-3xl mx-auto">
           <div className="flex items-center justify-between px-1 mb-4 font-mono text-[11px] uppercase tracking-widest text-ink-faint">
             <span>Publications Index</span>
             <span>P-INDEX</span>

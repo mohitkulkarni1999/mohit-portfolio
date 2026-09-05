@@ -18,7 +18,7 @@ export default function About({ profile, settings }) {
           subtitle={settings.section_about_subtitle}
         />
 
-        <div className="mt-14 grid lg:grid-cols-2 gap-10 items-start">
+        <div className="mt-10 sm:mt-14 grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
           <div className="space-y-6">
             <div className="card relative border-2 border-ink/70 shadow-card p-7">
               <span className="absolute -top-2 -left-2 text-primary-500" aria-hidden><FiPlus size={14} /></span>

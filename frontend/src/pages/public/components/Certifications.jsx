@@ -21,7 +21,7 @@ export default function Certifications({ settings }) {
           subtitle={settings.section_certifications_subtitle}
         />
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-10 sm:mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {certs.map((cert, i) => (
             <div key={cert.id} className="card relative border-2 border-ink/70 shadow-card p-0 flex flex-col">
               <span className="absolute -top-2 -right-2 text-primary-500" aria-hidden><FiPlus size={14} /></span>

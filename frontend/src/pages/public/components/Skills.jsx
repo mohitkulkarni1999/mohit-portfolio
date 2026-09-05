@@ -30,7 +30,7 @@ export default function Skills({ settings }) {
           subtitle={settings.section_skills_subtitle}
         />
 
-        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-10 sm:mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(grouped).map(([cat, items], gi) => (
             <div key={cat} className="card border-2 border-ink/70 shadow-card p-0">
               <div className="flex items-center gap-3 px-5 py-3.5 bg-surface-900 border-b-2 border-ink/70">

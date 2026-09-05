@@ -40,7 +40,7 @@ export default function Contact({ profile, settings }) {
           subtitle={settings.section_contact_subtitle}
         />
 
-        <div className="mt-14 grid lg:grid-cols-5 gap-8">
+        <div className="mt-10 sm:mt-14 grid lg:grid-cols-5 gap-6 lg:gap-8">
           <div className="lg:col-span-2 space-y-4">
             <p className="font-mono text-[11px] uppercase tracking-widest text-ink-faint">Contact Points — CP.LIST</p>
             {contactItems.map((item, i) => (

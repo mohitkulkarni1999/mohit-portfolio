@@ -21,7 +21,7 @@ export default function Experience({ settings }) {
           subtitle={settings.section_experience_subtitle}
         />
 
-        <div className="mt-14 max-w-4xl mx-auto">
+        <div className="mt-10 sm:mt-14 max-w-4xl mx-auto">
           <div className="flex items-center justify-between px-1 mb-5 font-mono text-[11px] uppercase tracking-widest text-ink-faint">
             <span>Revision Sheet — Rev. Log</span>
             <span>{String(items.length).padStart(2, '0')} ENTRIES</span>

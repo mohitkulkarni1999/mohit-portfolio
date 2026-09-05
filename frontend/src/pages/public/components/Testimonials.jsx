@@ -34,7 +34,7 @@ export default function Testimonials({ settings }) {
           subtitle={settings.section_testimonials_subtitle}
         />
 
-        <div className="mt-14 max-w-3xl mx-auto">
+        <div className="mt-10 sm:mt-14 max-w-3xl mx-auto">
           <div className="card relative border-2 border-ink/70 border-dashed shadow-card p-0">
             <div className="flex items-center justify-between px-5 py-3 bg-surface-900 border-b-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink-faint">
               <span>Reference Sheet RS-0{index + 1}</span>
