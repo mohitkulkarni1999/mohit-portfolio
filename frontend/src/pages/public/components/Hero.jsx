@@ -88,7 +88,7 @@ export default function Hero({ profile, settings }) {
             </div>
 
             <div className="p-6 font-mono text-sm leading-[1.9] relative">
-              <pre className="text-slate-300 overflow-hidden">
+              <pre className="text-slate-300 whitespace-pre-wrap overflow-hidden">
                 <span className="text-primary-400">$ </span><span className="text-amber-300">node</span> developer.js
                 {'\n'}
                 {codeLines.map((tok, i) => (

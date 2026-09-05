@@ -50,27 +50,27 @@ export default function Projects({ settings }) {
                     </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-surface-950 via-surface-950/20 to-transparent" />
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                    <span className="flex items-center gap-1.5 font-mono text-xs text-slate-300 bg-surface-950/70 border border-surface-700/60 rounded-md px-2.5 py-1 backdrop-blur">
-                      <FiFolder className="text-primary-400" /> {project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
+                  <div className="absolute top-4 left-4 right-4 flex items-start justify-between gap-2">
+                    <span className="inline-flex items-center gap-1.5 font-mono text-xs text-slate-300 bg-surface-950/70 border border-surface-700/60 rounded-md px-2.5 py-1 backdrop-blur max-w-[70%] truncate">
+                      <FiFolder className="text-primary-400 shrink-0" /> {project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
                     </span>
-                    {project.featured && <span className="chip !border-amber-500/30 !text-amber-300 !bg-amber-500/10"><FiStar /> featured</span>}
+                    {project.featured && <span className="chip !border-amber-500/30 !text-amber-300 !bg-amber-500/10 shrink-0"><FiStar /> featured</span>}
                   </div>
                 </div>
 
                 <div className="p-6 flex flex-col flex-1">
-                  <h3 className="font-mono text-xl font-bold text-white mb-2 group-hover:text-primary-300 transition-colors">{project.title}</h3>
-                  <p className="text-slate-400 text-sm mb-4 flex-1 leading-relaxed">{project.description}</p>
+                  <h3 className="font-mono text-base sm:text-xl font-bold text-white mb-2 group-hover:text-primary-300 transition-colors break-words">{project.title}</h3>
+                  <p className="text-slate-400 text-sm mb-4 flex-1 leading-relaxed break-words">{project.description}</p>
                   {project.tags?.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-5">
                       {project.tags.map((tag, idx) => (
-                        <span key={idx} className="inline-flex items-center gap-1.5 font-mono text-xs px-2.5 py-1 rounded-md bg-surface-900 text-slate-300 border border-surface-700">
-                          <span className={`w-2 h-2 rounded-full ${colorFor(idx)}`} /> {tag}
+                        <span key={idx} className="inline-flex items-center gap-1.5 font-mono text-xs px-2.5 py-1 rounded-md bg-surface-900 text-slate-300 border border-surface-700 break-words">
+                          <span className={`w-2 h-2 rounded-full ${colorFor(idx)} shrink-0`} /> {tag}
                         </span>
                       ))}
                     </div>
                   )}
-                  <div className="flex gap-3 pt-4 border-t border-surface-700/50">
+                  <div className="flex flex-wrap gap-3 pt-4 border-t border-surface-700/50">
                     {project.demo_url && <a href={project.demo_url} target="_blank" rel="noreferrer" className="btn-primary !px-4 !py-2 text-xs"><FiExternalLink className="text-surface-950" /> demo</a>}
                     {project.github_url && <a href={project.github_url} target="_blank" rel="noreferrer" className="btn-ghost !px-4 !py-2 text-xs"><FiGithub /> source</a>}
                   </div>
@@ -84,15 +84,14 @@ export default function Projects({ settings }) {
           <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {others.map((project, i) => (
               <div key={project.id} className="card hover:border-primary-500/40 hover:shadow-glow transition-all p-5 animate-slide-up flex flex-col" style={{ animationDelay: `${i * 80}ms` }}>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2 font-mono">
-                    <input type="checkbox" readOnly checked aria-label="repo" className="sr-only" />
-                    <span className="text-yellow-400"><FiFolder size={16} /></span>
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <div className="flex items-center gap-2 font-mono min-w-0">
+                    <span className="text-yellow-400 shrink-0"><FiFolder size={16} /></span>
                     <span className="text-slate-200 font-semibold truncate">{project.title}</span>
                   </div>
                   {project.featured && <FiStar className="text-amber-400 shrink-0" />}
                 </div>
-                <p className="text-slate-400 text-sm mb-5 flex-1 leading-relaxed">{project.description}</p>
+                <p className="text-slate-400 text-sm mb-5 flex-1 leading-relaxed break-words">{project.description}</p>
                 {project.tags?.length > 0 && (
                   <div className="flex flex-wrap gap-x-3 gap-y-1.5 font-mono text-xs">
                     {project.tags.slice(0, 5).map((tag, idx) => (
@@ -102,7 +101,7 @@ export default function Projects({ settings }) {
                     ))}
                   </div>
                 )}
-                <div className="flex gap-5 mt-5 pt-4 border-t border-surface-700/50 font-mono text-xs">
+                <div className="flex flex-wrap gap-x-5 gap-y-2 mt-5 pt-4 border-t border-surface-700/50 font-mono text-xs">
                   {project.demo_url && <a href={project.demo_url} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-primary-400 hover:text-primary-300"><FiExternalLink /> demo</a>}
                   {project.github_url && <a href={project.github_url} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-slate-400 hover:text-primary-300"><FiGithub /> code</a>}
                 </div>

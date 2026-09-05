@@ -27,15 +27,15 @@ export default function Services({ settings }) {
             <div key={service.id} className="card overflow-hidden p-0 group animate-slide-up" style={{ animationDelay: `${i * 100}ms` }}>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="inline-flex w-11 h-11 rounded-lg bg-primary-500/10 border border-primary-500/20 text-primary-400 items-center justify-center group-hover:bg-primary-500 group-hover:text-surface-950 group-hover:border-primary-500 transition-all duration-300">
+                  <span className="inline-flex w-11 h-11 rounded-lg bg-primary-500/10 border border-primary-500/20 text-primary-400 items-center justify-center group-hover:bg-primary-500 group-hover:text-surface-950 group-hover:border-primary-500 transition-all duration-300 shrink-0">
                     <Icon name={service.icon} size={20} />
                   </span>
-                  <span className="font-mono text-xs text-slate-600">def {service.title.toLowerCase().replace(/[^a-z0-9]/gi, '_')}():</span>
+                  <span className="font-mono text-xs text-slate-600 truncate min-w-0">def {service.title.toLowerCase().replace(/[^a-z0-9]/gi, '_')}():</span>
                 </div>
-                <h3 className="font-mono text-lg font-bold text-white mb-2">
+                <h3 className="font-mono text-lg font-bold text-white mb-2 break-words">
                   <span className="text-amber-400">#</span> {service.title}
                 </h3>
-                <p className="text-slate-400 text-sm mb-4 leading-relaxed">{service.description}</p>
+                <p className="text-slate-400 text-sm mb-4 leading-relaxed break-words">{service.description}</p>
                 {service.features?.length > 0 && (
                   <ul className="space-y-2 font-mono text-sm">
                     {service.features.map((f, idx) => (
@@ -46,8 +46,8 @@ export default function Services({ settings }) {
                   </ul>
                 )}
               </div>
-              <div className="px-6 py-3 bg-surface-900/70 border-t border-surface-700/50 font-mono text-xs text-slate-500 flex items-center gap-2">
-                <span className="text-primary-400">$</span> install {service.title.toLowerCase().replace(/[^a-z0-9]/gi, '-')}
+              <div className="px-6 py-3 bg-surface-900/70 border-t border-surface-700/50 font-mono text-xs text-slate-500 flex items-center gap-2 min-w-0">
+                <span className="text-primary-400">$</span> <span className="truncate">install {service.title.toLowerCase().replace(/[^a-z0-9]/gi, '-')}</span>
               </div>
             </div>
           ))}
