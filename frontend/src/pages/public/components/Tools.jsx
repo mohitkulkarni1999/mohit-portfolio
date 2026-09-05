@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
-import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Tools({ settings }) {
   const [tools, setTools] = useState([]);
@@ -22,8 +21,7 @@ export default function Tools({ settings }) {
   let row = 0;
 
   return (
-    <section id="tools" className="relative overflow-hidden section-pad bg-surface-900/40">
-      <BlueprintBackground variant="quiet" />
+    <section id="tools" className="relative overflow-hidden section-pad">
       <div className="container-custom relative">
         <SectionHeader
           eyebrow="factory spec 05"

@@ -17,6 +17,7 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import BlueprintBackground from '../../components/BlueprintBackground';
 
 const SECTION_MAP = {
   about: About,
@@ -64,6 +65,7 @@ function PortfolioContent() {
 
   return (
     <div className="min-h-screen bg-surface-950 relative">
+      <BlueprintBackground fixed variant="hero" />
       <Navbar profile={profile} settings={settings} />
       <Hero profile={profile} settings={settings} />
       <main>

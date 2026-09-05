@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { FiCalendar, FiBookOpen, FiAward, FiPlus } from 'react-icons/fi';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
-import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Education({ settings }) {
   const [items, setItems] = useState([]);
@@ -15,7 +14,6 @@ export default function Education({ settings }) {
 
   return (
     <section id="education" className="relative overflow-hidden section-pad">
-      <BlueprintBackground variant="flip" />
       <div className="container-custom relative">
         <SectionHeader
           eyebrow="program records 08"

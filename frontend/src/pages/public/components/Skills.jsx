@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
 import Icon from '../../../components/Icon';
-import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Skills({ settings }) {
   const [skills, setSkills] = useState([]);
@@ -23,8 +22,7 @@ export default function Skills({ settings }) {
   let itemNo = 0;
 
   return (
-    <section id="skills" className="relative overflow-hidden section-pad bg-surface-900/40">
-      <BlueprintBackground variant="flip" />
+    <section id="skills" className="relative overflow-hidden section-pad">
       <div className="container-custom relative">
         <SectionHeader
           eyebrow="materials list 03"

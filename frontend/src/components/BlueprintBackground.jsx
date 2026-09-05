@@ -54,7 +54,7 @@ function LCorner({ x, y, len = 14, color = INK, opacity = 0.5 }) {
   );
 }
 
-export default function BlueprintBackground({ variant = 'hero' }) {
+export default function BlueprintBackground({ variant = 'hero', fixed = false }) {
   const uid = useId().replace(/[:]/g, 'x');
   const cfg = VARIANTS[variant] || VARIANTS.hero;
   const quiet = cfg.quiet;
@@ -79,7 +79,7 @@ export default function BlueprintBackground({ variant = 'hero' }) {
   );
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
+    <div className={`${fixed ? 'fixed' : 'absolute'} inset-0 overflow-hidden pointer-events-none select-none`} aria-hidden="true">
       <style>{CSS}</style>
 
       {glowB}
@@ -202,33 +202,33 @@ export default function BlueprintBackground({ variant = 'hero' }) {
 
               <g className="bp-spin">
                 <g stroke={ORANGE} strokeOpacity="0.3" strokeWidth="1" fill="none">
-                  <circle cx="1000" cy="660" r="110" />
-                  <circle cx="1000" cy="660" r="74" />
-                  <circle cx="1000" cy="660" r="38" />
-                  <ellipse cx="1000" cy="660" rx="110" ry="42" />
-                  <ellipse cx="1000" cy="660" rx="42" ry="110" />
+                  <circle cx="1000" cy="655" r="80" />
+                  <circle cx="1000" cy="655" r="54" />
+                  <circle cx="1000" cy="655" r="28" />
+                  <ellipse cx="1000" cy="655" rx="80" ry="30" />
+                  <ellipse cx="1000" cy="655" rx="30" ry="80" />
                 </g>
-                <g transform="rotate(35 1000 660)">
-                  <circle cx="1000" cy="660" r="110" fill="none" stroke={ORANGE} strokeOpacity="0.18" strokeWidth="0.9" />
-                  <ellipse cx="1000" cy="660" rx="110" ry="40" fill="none" stroke={ORANGE} strokeOpacity="0.14" strokeWidth="0.8" />
+                <g transform="rotate(35 1000 655)">
+                  <circle cx="1000" cy="655" r="80" fill="none" stroke={ORANGE} strokeOpacity="0.18" strokeWidth="0.9" />
+                  <ellipse cx="1000" cy="655" rx="80" ry="28" fill="none" stroke={ORANGE} strokeOpacity="0.14" strokeWidth="0.8" />
                 </g>
-                <g transform="rotate(-55 1000 660)">
-                  <ellipse cx="1000" cy="660" rx="110" ry="40" fill="none" stroke={ORANGE} strokeOpacity="0.14" strokeWidth="0.8" />
+                <g transform="rotate(-55 1000 655)">
+                  <ellipse cx="1000" cy="655" rx="80" ry="28" fill="none" stroke={ORANGE} strokeOpacity="0.14" strokeWidth="0.8" />
                 </g>
-                {[1000 - 110, 1000 + 110, 660 - 110, 660 + 110].map((c, i) => (
+                {[1000 - 80, 1000 + 80, 655 - 80, 655 + 80].map((c, i) => (
                   <g key={i} stroke={ORANGE} strokeOpacity="0.5" strokeWidth="0.8">
                     {i < 2 ? (
-                      <line x1={c - 5} y1={660} x2={c + 5} y2={660} />
+                      <line x1={c - 5} y1={655} x2={c + 5} y2={655} />
                     ) : (
                       <line x1={1000} y1={c - 9} x2={1000} y2={c + 9} />
                     )}
                   </g>
                 ))}
-                <circle cx={1000} cy={660} r={2.5} fill={ORANGE} fillOpacity="0.7" />
+                <circle cx={1000} cy={655} r={2.5} fill={ORANGE} fillOpacity="0.7" />
               </g>
               <g className="bp-spin-rev" stroke={ORANGE} strokeOpacity="0.12" strokeWidth="0.8" fill="none">
-                <ellipse cx="1000" cy="660" rx="125" ry="46" />
-                <ellipse cx="1000" cy="660" rx="46" ry="125" />
+                <ellipse cx="1000" cy="655" rx="82" ry="30" />
+                <ellipse cx="1000" cy="655" rx="30" ry="82" />
               </g>
 
               <g className="bp-spin" stroke={ORANGE} strokeOpacity="0.10" strokeWidth="0.9" fill="none">

@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 import { FiMail, FiMapPin, FiPhone, FiSend, FiClock, FiPlus } from 'react-icons/fi';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
-import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Contact({ profile, settings }) {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
@@ -33,8 +32,7 @@ export default function Contact({ profile, settings }) {
   ].filter(Boolean);
 
   return (
-    <section id="contact" className="relative overflow-hidden section-pad bg-surface-900/40">
-      <BlueprintBackground variant="quiet" />
+    <section id="contact" className="relative overflow-hidden section-pad">
       <div className="container-custom relative">
         <SectionHeader
           eyebrow="transmittal sheet 13"

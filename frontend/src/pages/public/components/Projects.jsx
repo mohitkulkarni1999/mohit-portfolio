@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
-import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Projects({ settings }) {
   const [projects, setProjects] = useState([]);
@@ -17,8 +16,7 @@ export default function Projects({ settings }) {
   const others = projects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="relative overflow-hidden section-pad bg-surface-900/40">
-      <BlueprintBackground variant="hero" />
+    <section id="projects" className="relative overflow-hidden section-pad">
       <div className="container-custom relative">
         <SectionHeader
           eyebrow="drawing index 06"

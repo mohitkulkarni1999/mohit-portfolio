@@ -3,7 +3,6 @@ import { FiCalendar } from 'react-icons/fi';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
 import Icon from '../../../components/Icon';
-import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Achievements({ settings }) {
   const [items, setItems] = useState([]);
@@ -16,7 +15,6 @@ export default function Achievements({ settings }) {
 
   return (
     <section id="achievements" className="relative overflow-hidden section-pad">
-      <BlueprintBackground variant="flip" />
       <div className="container-custom relative">
         <SectionHeader
           eyebrow="ledger record 10"

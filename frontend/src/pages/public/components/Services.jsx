@@ -3,7 +3,6 @@ import { FiCheck } from 'react-icons/fi';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
 import Icon from '../../../components/Icon';
-import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Services({ settings }) {
   const [services, setServices] = useState([]);
@@ -16,7 +15,6 @@ export default function Services({ settings }) {
 
   return (
     <section id="services" className="relative overflow-hidden section-pad">
-      <BlueprintBackground variant="alt" />
       <div className="container-custom relative">
         <SectionHeader
           eyebrow="work orders 04"

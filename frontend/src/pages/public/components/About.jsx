@@ -1,6 +1,5 @@
 import { FiDownload, FiArrowRight, FiPlus } from 'react-icons/fi';
 import SectionHeader from '../../../components/SectionHeader';
-import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function About({ profile, settings }) {
   const facts = [
@@ -12,7 +11,6 @@ export default function About({ profile, settings }) {
 
   return (
     <section id="about" className="relative overflow-hidden section-pad">
-      <BlueprintBackground variant="alt" />
       <div className="container-custom relative">
         <SectionHeader
           eyebrow="dwg. note 02"

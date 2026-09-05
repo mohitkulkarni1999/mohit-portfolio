@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { FiExternalLink, FiCalendar, FiAward, FiPlus } from 'react-icons/fi';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
-import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Certifications({ settings }) {
   const [certs, setCerts] = useState([]);
@@ -14,8 +13,7 @@ export default function Certifications({ settings }) {
   if (!certs.length) return null;
 
   return (
-    <section id="certifications" className="relative overflow-hidden section-pad bg-surface-900/40">
-      <BlueprintBackground variant="alt" />
+    <section id="certifications" className="relative overflow-hidden section-pad">
       <div className="container-custom relative">
         <SectionHeader
           eyebrow="verification 09"
