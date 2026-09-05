@@ -17,28 +17,38 @@ export default function Services({ settings }) {
     <section id="services" className="section-pad">
       <div className="container-custom">
         <SectionHeader
-          eyebrow="Services"
+          eyebrow="services --list"
           title={settings.section_services_heading || 'What I Do'}
           subtitle={settings.section_services_subtitle}
         />
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => (
-            <div key={service.id} className="card-hover p-7 group animate-slide-up" style={{ animationDelay: `${i * 100}ms` }}>
-              <span className="inline-flex w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-500/20 to-primary-700/20 text-primary-400 items-center justify-center mb-5 group-hover:from-primary-500 group-hover:to-primary-600 group-hover:text-white transition-all duration-300">
-                <Icon name={service.icon} size={24} />
-              </span>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">{service.title}</h3>
-              <p className="text-slate-400 text-sm mb-4">{service.description}</p>
-              {service.features?.length > 0 && (
-                <ul className="space-y-2">
-                  {service.features.map((f, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-slate-300">
-                      <FiCheck className="text-emerald-400 shrink-0" /> {f}
-                    </li>
-                  ))}
-                </ul>
-              )}
+            <div key={service.id} className="card overflow-hidden p-0 group animate-slide-up" style={{ animationDelay: `${i * 100}ms` }}>
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="inline-flex w-11 h-11 rounded-lg bg-primary-500/10 border border-primary-500/20 text-primary-400 items-center justify-center group-hover:bg-primary-500 group-hover:text-surface-950 group-hover:border-primary-500 transition-all duration-300">
+                    <Icon name={service.icon} size={20} />
+                  </span>
+                  <span className="font-mono text-xs text-slate-600">def {service.title.toLowerCase().replace(/[^a-z0-9]/gi, '_')}():</span>
+                </div>
+                <h3 className="font-mono text-lg font-bold text-white mb-2">
+                  <span className="text-amber-400">#</span> {service.title}
+                </h3>
+                <p className="text-slate-400 text-sm mb-4 leading-relaxed">{service.description}</p>
+                {service.features?.length > 0 && (
+                  <ul className="space-y-2 font-mono text-sm">
+                    {service.features.map((f, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-slate-300">
+                        <FiCheck className="text-primary-400 shrink-0" /> {f}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div className="px-6 py-3 bg-surface-900/70 border-t border-surface-700/50 font-mono text-xs text-slate-500 flex items-center gap-2">
+                <span className="text-primary-400">$</span> install {service.title.toLowerCase().replace(/[^a-z0-9]/gi, '-')}
+              </div>
             </div>
           ))}
         </div>
