@@ -88,35 +88,59 @@ export default function Hero({ profile, settings }) {
               <span className="text-ink-faint shrink-0">Sheet {plateSheet}</span>
             </div>
 
-            <div className="relative bg-grid px-6 py-8 h-[340px] overflow-hidden">
-              <div className="absolute inset-y-6 left-6 w-px border-l border-dashed border-ink/50" aria-hidden />
-              <div className="absolute inset-y-6 right-6 w-px border-l border-dashed border-ink/50" aria-hidden />
-              <div className="absolute inset-x-6 top-6 h-px border-t border-dashed border-ink/50" aria-hidden />
-              <div className="absolute inset-x-6 bottom-6 h-px border-t border-dashed border-ink/50" aria-hidden />
-
-              <div className="absolute top-2 left-8 font-mono text-[9px] uppercase tracking-widest text-ink-faint" aria-hidden>▲ {plateHeight}</div>
-
-              <div className="relative h-full flex items-center justify-center">
-                <span className="relative font-display font-extrabold text-[130px] leading-none text-primary-500/25 select-none">
-                  {first[0]}
-                  <span className="absolute inset-0 flex items-center justify-center">
-                    <span className="block w-10 h-10 border-2 border-primary-600 rotate-45" aria-hidden />
-                  </span>
-                  <span className="absolute inset-0 flex items-center justify-center">
-                    <span className="block w-1 h-1 bg-primary-600 rounded-full" aria-hidden />
-                  </span>
+            <div className="relative bg-grid overflow-hidden">
+              <div className="flex items-center justify-between px-6 pt-3 font-mono text-[10px] uppercase tracking-widest">
+                <span className="text-ink">▲ {plateHeight}</span>
+                <span className="flex items-center gap-1.5 text-ink-faint">
+                  <span className="w-1.5 h-1.5 bg-primary-500" /> dwg. no. MOH-001
                 </span>
-
-                <div className="absolute right-8 top-1/2 -translate-y-1/2 max-w-[46%] space-y-2.5">
-                  <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-ink-faint">Core Stack</p>
-                  {plateStack.map((line) => (
-                    <p key={line} className="font-mono text-xs font-bold text-ink border-b border-ink/20 pb-1 break-words">{line}</p>
-                  ))}
-                </div>
               </div>
 
-              <div className="absolute bottom-3 right-3 font-mono text-[9px] uppercase tracking-widest text-ink-faint" aria-hidden>
-                {plateTolerance}
+              <div className="absolute inset-y-8 left-6 w-px border-l border-dashed border-ink/50" aria-hidden />
+              <div className="absolute inset-y-8 right-6 w-px border-l border-dashed border-ink/50" aria-hidden />
+
+              <div className="px-6 py-6 flex flex-col gap-6 min-h-[360px]">
+                <div className="flex gap-6 items-stretch flex-1">
+                  <div className="relative flex-1 flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-x-4 top-1/2 h-px border-t border-dashed border-ink/40" aria-hidden />
+                    <div className="absolute inset-y-4 left-1/2 w-px border-l border-dashed border-ink/40" aria-hidden />
+
+                    <span className="relative font-display font-extrabold text-[120px] leading-none text-primary-500/25 select-none">
+                      {first[0]}
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        <span className="block w-10 h-10 border-2 border-primary-600 rotate-45" aria-hidden />
+                      </span>
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        <span className="block w-1 h-1 bg-primary-600 rounded-full" aria-hidden />
+                      </span>
+                    </span>
+
+                    <span className="absolute top-2 left-1/2 -translate-x-1/2 font-mono text-[9px] uppercase tracking-widest text-ink-faint" aria-hidden>plan view</span>
+                    <span className="absolute bottom-2 left-1/2 -translate-x-1/2 font-mono text-[9px] uppercase tracking-widest text-ink-faint" aria-hidden>sec. a-a</span>
+                  </div>
+
+                  <div className="w-px border-l border-ink/40" aria-hidden />
+
+                  <div className="w-[52%] shrink-0">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-ink-faint mb-3">Core Stack</p>
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+                      {plateStack.map((line, i) => (
+                        <div key={line} className="flex items-baseline gap-2 border-b border-dashed border-ink/25 pb-1">
+                          <span className="font-mono text-[9px] text-ink-faint">{String(i + 1).padStart(2, '0')}</span>
+                          <span className="font-mono text-xs font-bold text-ink break-words">{line}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 border-t border-dashed border-ink/50 pt-3">
+                  <span className="flex-1 h-px border-t border-dotted border-ink/30" aria-hidden />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-primary-600 whitespace-nowrap">
+                    {plateTolerance}
+                  </span>
+                  <span className="flex-1 h-px border-t border-dotted border-ink/30" aria-hidden />
+                </div>
               </div>
             </div>
 
