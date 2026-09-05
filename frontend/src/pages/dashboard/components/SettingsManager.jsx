@@ -51,20 +51,20 @@ export default function SettingsManager() {
     }
   };
 
-  if (loading) return <div className="text-slate-400">Loading...</div>;
+  if (loading) return <div className="text-ink-soft">Loading...</div>;
 
   return (
     <div className="space-y-8 animate-fade-in pb-40">
       <div>
         <div className="flex items-center gap-3 mb-1">
-          <FiSettings className="text-primary-400 text-xl" />
+          <FiSettings className="text-primary-600 text-xl" />
           <h2 className="text-lg font-bold">Section Manager</h2>
         </div>
-        <p className="text-sm text-slate-400 mb-6 flex items-center gap-2">
+        <p className="text-sm text-ink-soft mb-6 flex items-center gap-2">
           <span className="flex gap-1"><FiEye /> visible</span>
-          <span className="mx-1 text-slate-600">|</span>
+          <span className="mx-1 text-ink-faint">|</span>
           <span className="flex gap-1"><FiEyeOff /> hidden</span>
-          <span className="mx-1 text-slate-600">|</span>
+          <span className="mx-1 text-ink-faint">|</span>
           show/hide sections, drag ordering, and edit headings & subtitles below.
         </p>
       </div>
@@ -79,25 +79,25 @@ export default function SettingsManager() {
                 <button
                   onClick={() => { const v = !visible; handleSave({ [`show_${section.id}`]: v }); }}
                   className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    visible ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20' : 'bg-surface-800 text-slate-500 border border-surface-700 hover:text-slate-300'
+                    visible ? 'bg-primary-500/10 text-primary-600 border border-primary-500/30 hover:bg-primary-500/20' : 'bg-surface-800 text-ink-faint border border-surface-700 hover:text-ink-soft'
                   }`}
                 >
                   {visible ? <><FiEye /> Shown</> : <><FiEyeOff /> Hidden</>}
                 </button>
                 <div className="flex-1 min-w-[150px]">
-                  <h3 className="font-semibold text-white">{section.label}</h3>
-                  <p className={`text-xs ${visible ? 'text-emerald-400' : 'text-slate-500'}`}>{visible ? 'Visible on website' : 'Hidden from website'}</p>
+                  <h3 className="font-semibold text-ink">{section.label}</h3>
+                  <p className={`text-xs ${visible ? 'text-primary-600' : 'text-ink-faint'}`}>{visible ? 'Visible on website' : 'Hidden from website'}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-slate-500">Order:</span>
+                  <span className="text-xs text-ink-faint">Order:</span>
                   <input
                     type="number"
                     value={order ?? ''}
                     onChange={(e) => set(`order_${section.id}`, e.target.value === '' ? 0 : +e.target.value)}
-                    className="w-16 px-2 py-1.5 bg-surface-900 border border-surface-700 rounded-lg text-sm text-slate-200 text-center"
+                    className="w-16 px-2 py-1.5 bg-surface-900 border border-surface-700 rounded-lg text-sm text-ink text-center"
                   />
                   <button
-                    className="p-2 rounded-lg border border-surface-700 text-slate-400 hover:text-primary-300 text-xs"
+                    className="p-2 rounded-lg border border-surface-700 text-ink-soft hover:text-primary-700 text-xs"
                     onClick={() => handleSave(Object.fromEntries(Object.entries({ [`order_${section.id}`]: order ?? 0 })))}
                     title="Save order"
                   >
@@ -149,7 +149,7 @@ function BrandingCard({ settings, set, handleSave, saving }) {
   return (
     <div className="card p-6">
       <div className="flex items-center gap-3 mb-5">
-        <FiSettings className="text-primary-400 text-xl" />
+        <FiSettings className="text-primary-600 text-xl" />
         <h2 className="text-lg font-bold">Site Branding</h2>
       </div>
       <div className="grid sm:grid-cols-2 gap-4">
@@ -177,7 +177,7 @@ function HeroCard({ settings, set, handleSave, saving }) {
   return (
     <div className="card p-6">
       <div className="flex items-center gap-3 mb-5">
-        <FiSettings className="text-primary-400 text-xl" />
+        <FiSettings className="text-primary-600 text-xl" />
         <h2 className="text-lg font-bold">Hero Section</h2>
       </div>
       <div className="grid sm:grid-cols-2 gap-4">

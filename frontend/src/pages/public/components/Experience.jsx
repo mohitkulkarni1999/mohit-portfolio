@@ -3,8 +3,6 @@ import { FiCalendar, FiMapPin } from 'react-icons/fi';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
 
-const HASHES = ['a1b2c3d', 'e4f5a6b', '7c8d9e0', 'f1a2b3c', '4d5e6f7', 'a8b9c0d', 'e1f2a3b'];
-
 export default function Experience({ settings }) {
   const [items, setItems] = useState([]);
 
@@ -18,47 +16,51 @@ export default function Experience({ settings }) {
     <section id="experience" className="section-pad bg-surface-900/40">
       <div className="container-custom">
         <SectionHeader
-          eyebrow="history --job-log"
+          eyebrow="career log 07"
           title={settings.section_experience_heading || 'Work Experience'}
           subtitle={settings.section_experience_subtitle}
         />
 
         <div className="mt-14 max-w-4xl mx-auto">
-          <div className="relative font-mono">
-            <p className="text-xs text-slate-600 mb-8 flex items-center gap-2">
-              <span className="text-primary-400">$</span> git log --career --oneline
-            </p>
-            <div className="relative border-l-2 border-primary-500/30 ml-2 sm:ml-4 space-y-10">
-              {items.map((exp, i) => (
-                <div key={exp.id} className="relative pl-6 sm:pl-10 animate-slide-up" style={{ animationDelay: `${i * 100}ms` }}>
-                  <span className="absolute -left-[7px] top-1.5 text-primary-400">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><circle cx="7" cy="7" r="3.5" /></svg>
-                  </span>
-                  <div className="card p-6 hover:border-primary-500/50 hover:shadow-glow transition-all">
-                    <p className="text-xs text-slate-500 mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
-                      <span className="text-surface-600">commit</span>
-                      <span className="text-amber-400">{HASHES[i % HASHES.length]}</span>
-                      {exp.is_current && <span className="chip !border-emerald-500/30 !text-emerald-300 !bg-emerald-500/10">HEAD</span>}
-                    </p>
-                    <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
-                      <div>
-                        <h3 className="font-mono text-lg font-bold text-white">{exp.position}</h3>
-                        <p className="text-primary-400 font-mono text-sm">@{exp.company}</p>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 font-mono mb-3">
-                      <span className="flex items-center gap-1.5"><FiCalendar /> {new Date(exp.start_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} → {exp.is_current || !exp.end_date ? 'now' : new Date(exp.end_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
-                      {exp.location && <span className="flex items-center gap-1.5"><FiMapPin /> {exp.location}</span>}
-                    </div>
-                    {exp.description && <p className="text-slate-400 text-sm leading-relaxed">{exp.description}</p>}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="ml-2 sm:ml-4 pl-6 sm:pl-10 mt-8 text-slate-600 text-xs">
-              <span className="text-primary-400">$</span> <span className="text-slate-500">git log</span> --to-be-continued<span className="cursor-blink text-primary-400">_</span>
-            </div>
+          <div className="flex items-center justify-between px-1 mb-5 font-mono text-[11px] uppercase tracking-widest text-ink-faint">
+            <span>Revision Sheet — Rev. Log</span>
+            <span>{String(items.length).padStart(2, '0')} ENTRIES</span>
           </div>
+
+          <div className="divide-y-2 divide-ink/15 border-2 border-ink/70 bg-surface-850 shadow-card">
+            {items.map((exp, i) => (
+              <div key={exp.id} className="relative grid sm:grid-cols-[7.5rem_1fr] gap-2 sm:gap-6 px-5 sm:px-7 py-6">
+                <div className="font-mono text-xs text-ink-faint uppercase tracking-widest whitespace-nowrap">
+                  <p className="mb-2">
+                    {new Date(exp.start_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                  </p>
+                  <p className="flex items-center gap-1.5">
+                    <FiCalendar className="text-primary-600" size={12} />
+                    {exp.is_current || !exp.end_date ? 'NOW' : new Date(exp.end_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                  </p>
+                </div>
+                <div className="min-w-0">
+                  {exp.is_current && (
+                    <div className="mb-2"><span className="stamp !text-primary-600 bg-primary-500/5">current</span></div>
+                  )}
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1.5">
+                    <h3 className="font-display text-lg font-extrabold uppercase text-ink break-words">{exp.position}</h3>
+                    <span className="font-mono text-[11px] uppercase tracking-widest text-ink-faint shrink-0">@{exp.company}</span>
+                  </div>
+                  {exp.description && <p className="text-ink-soft text-sm leading-relaxed break-words">{exp.description}</p>}
+                  {exp.location && (
+                    <p className="flex items-center gap-1.5 text-xs text-ink-faint font-mono mt-2">
+                      <FiMapPin size={12} className="text-primary-600" /> {exp.location}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-5 font-mono text-xs text-ink-faint text-center uppercase tracking-widest">
+            Rev. log — to be continued
+          </p>
         </div>
       </div>
     </section>

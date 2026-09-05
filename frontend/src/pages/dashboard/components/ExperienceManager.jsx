@@ -63,12 +63,12 @@ export default function ExperienceManager() {
     }
   };
 
-  if (loading) return <div className="text-slate-400">Loading...</div>;
+  if (loading) return <div className="text-ink-soft">Loading...</div>;
 
   return (
     <div className="animate-fade-in">
       <div className="flex justify-between items-center mb-6">
-        <p className="text-slate-400 text-sm">{items.length} entries</p>
+        <p className="text-ink-soft text-sm">{items.length} entries</p>
         <button onClick={openAdd} className="btn-primary text-sm py-2"><FiPlus /> Add Experience</button>
       </div>
 
@@ -78,16 +78,16 @@ export default function ExperienceManager() {
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="font-semibold">{item.position}</h3>
-                <p className="text-primary-400 text-sm">{item.company}</p>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-primary-600 text-sm">{item.company}</p>
+                <p className="text-xs text-ink-faint mt-1">
                   {new Date(item.start_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} - {item.is_current || !item.end_date ? 'Present' : new Date(item.end_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                   {item.location ? ` · ${item.location}` : ''}
                 </p>
-                {item.description && <p className="text-sm text-slate-400 mt-2">{item.description}</p>}
+                {item.description && <p className="text-sm text-ink-soft mt-2">{item.description}</p>}
               </div>
               <div className="flex gap-2">
-                <button onClick={() => openEdit(item)} className="p-2 text-slate-400 hover:text-primary-400"><FiEdit2 /></button>
-                <button onClick={() => handleDelete(item.id)} className="p-2 text-slate-400 hover:text-red-400"><FiTrash2 /></button>
+                <button onClick={() => openEdit(item)} className="p-2 text-ink-soft hover:text-primary-600"><FiEdit2 /></button>
+                <button onClick={() => handleDelete(item.id)} className="p-2 text-ink-soft hover:text-red-400"><FiTrash2 /></button>
               </div>
             </div>
           </div>
@@ -118,9 +118,9 @@ export default function ExperienceManager() {
               <input value={form.location} onChange={(e) => setForm({ ...form, location: e.target.value })} className="input-field" placeholder="City, Country" />
             </div>
           </div>
-          <label className="flex items-center gap-3 bg-slate-800 p-3 rounded-lg">
+          <label className="flex items-center gap-3 bg-surface-800 p-3 rounded-lg">
             <input type="checkbox" checked={form.is_current} onChange={(e) => setForm({ ...form, is_current: e.target.checked, end_date: e.target.checked ? '' : form.end_date })} className="w-4 h-4" />
-            <span className="text-sm text-slate-300">I currently work here</span>
+            <span className="text-sm text-ink-soft">I currently work here</span>
           </label>
           <div>
             <label className="label-field">Description</label>

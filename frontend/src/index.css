@@ -8,22 +8,25 @@
     scroll-padding-top: 5rem;
   }
   body {
-    @apply bg-surface-950 text-slate-300 font-sans antialiased;
-    background-image: radial-gradient(circle at 1px 1px, rgba(125,252,176,0.04) 1px, transparent 0);
-    background-size: 32px 32px;
+    @apply bg-surface-950 text-ink font-sans antialiased;
+    background-image:
+      linear-gradient(rgba(232,74,15,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,74,15,0.045) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-attachment: fixed;
   }
   ::selection {
     @apply bg-primary-500 text-surface-950;
   }
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
   }
   ::-webkit-scrollbar-track {
     @apply bg-surface-950;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-surface-700 rounded-full hover:bg-primary-700;
+    @apply bg-surface-700 border-2 border-surface-950 hover:bg-ink-soft;
   }
 }
 
@@ -32,60 +35,69 @@
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   .section-pad {
-    @apply py-20 sm:py-28;
+    @apply py-20 sm:py-24;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary-500 text-surface-950 font-mono font-bold rounded-lg transition-all duration-300 hover:shadow-glow hover:bg-primary-400 hover:-translate-y-0.5 disabled:opacity-50 disabled:pointer-events-none;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-500 text-ink font-mono font-bold uppercase tracking-wider text-xs rounded-none border border-ink/70 shadow-glow transition-transform duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 disabled:opacity-50 disabled:pointer-events-none;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-primary-500/40 text-primary-300 font-mono font-semibold rounded-lg transition-all duration-300 hover:border-primary-400 hover:text-primary-200 hover:bg-primary-500/5 hover:-translate-y-0.5 bg-surface-900/40;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent text-ink font-mono font-bold uppercase tracking-wider text-xs rounded-none border border-ink/60 transition-all duration-150 hover:border-primary-500 hover:text-primary-600 hover:bg-primary-500/5;
   }
   .card {
-    @apply bg-surface-850/60 border border-surface-700/60 rounded-xl backdrop-blur-sm;
+    @apply bg-surface-850 border border-surface-700 rounded-none backdrop-blur-sm;
   }
   .card-hover {
-    @apply card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-500/50 hover:shadow-glow;
+    @apply card transition-all duration-150 hover:border-primary-500 hover:shadow-card;
   }
   .input-field {
-    @apply w-full px-4 py-3 bg-surface-900/80 border border-surface-700 rounded-lg font-mono text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-primary-500/60 focus:border-primary-500 transition-all;
+    @apply w-full px-4 py-3 bg-surface-850 border border-surface-700 rounded-none font-mono text-ink placeholder:text-ink-faint focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/40 transition-all;
   }
   .label-field {
-    @apply block text-sm font-mono text-slate-400 mb-2;
+    @apply block text-sm font-mono uppercase tracking-widest text-ink-soft mb-2;
   }
   .chip {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono font-medium rounded-md bg-primary-500/10 text-primary-300 border border-primary-500/30;
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-semibold uppercase tracking-wider rounded-none bg-primary-500/10 text-primary-700 border border-primary-500/40;
   }
   .section-eyebrow {
-    @apply text-primary-400 text-sm font-mono font-semibold tracking-widest uppercase mb-3;
+    @apply text-primary-600 text-xs font-mono font-bold tracking-[0.3em] uppercase mb-3 flex items-center gap-3;
   }
   .section-title {
-    @apply font-mono text-3xl sm:text-4xl font-bold text-white;
+    @apply font-display text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-ink;
   }
   .section-subtitle {
-    @apply text-slate-400 mt-3 max-w-2xl font-mono text-sm sm:text-base;
-  }
-  .terminal-dots {
-    @apply flex items-center gap-1.5;
+    @apply text-ink-soft mt-4 max-w-2xl font-mono text-sm sm:text-base leading-relaxed;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-400 via-primary-300 to-primary-500 bg-clip-text text-transparent;
+    @apply text-primary-600;
   }
-  .bg-grid {
-    background-image: radial-gradient(circle at 1px 1px, rgba(125,252,176,0.07) 1px, transparent 0);
-    background-size: 24px 24px;
+  .animate-fade-in {
+    animation: mp-fade-in 0.35s ease-out both;
   }
-  .cursor-blink {
-    animation: blink 1s step-end infinite;
+  @keyframes mp-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-  .text-shimmer {
-    background: linear-gradient(90deg, #4bf08f 0%, #fbbf24 25%, #4bf08f 50%, #fbbf24 75%, #4bf08f 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: shimmer 4s linear infinite;
+  .hairline {
+    border-top: 1px dotted rgba(27,26,21,0.35);
+  }
+  .hairline-b {
+    border-bottom: 1px dotted rgba(27,26,21,0.35);
+  }
+  .corner-tick {
+    position: relative;
+  }
+  .stamp {
+    @apply inline-flex items-center border-2 border-primary-600/70 text-primary-600 font-mono font-bold uppercase tracking-[0.25em] text-[10px] px-3 py-1;
+    transform: rotate(-2deg);
+  }
+  .sheet-index {
+    @apply font-mono text-xs text-ink-faint uppercase tracking-widest;
   }
 }

@@ -75,12 +75,12 @@ export default function ProjectsManager() {
     }
   };
 
-  if (loading) return <div className="text-slate-400">Loading...</div>;
+  if (loading) return <div className="text-ink-soft">Loading...</div>;
 
   return (
     <div className="animate-fade-in">
       <div className="flex justify-between items-center mb-6">
-        <p className="text-slate-400 text-sm">{projects.length} projects</p>
+        <p className="text-ink-soft text-sm">{projects.length} projects</p>
         <button onClick={openAdd} className="btn-primary text-sm py-2"><FiPlus /> Add Project</button>
       </div>
 
@@ -88,20 +88,20 @@ export default function ProjectsManager() {
         {projects.map((p) => (
           <div key={p.id} className="card overflow-hidden hover:border-primary-500/50 transition-colors">
             {p.image_url && (
-              <div className="h-40 bg-slate-800 overflow-hidden">
+              <div className="h-40 bg-surface-800 overflow-hidden">
                 <img src={p.image_url} alt={p.title} className="w-full h-full object-cover" />
               </div>
             )}
             <div className="p-4">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold">{p.title}</h3>
-                <button onClick={() => toggleFeatured(p)} className={`${p.featured ? 'text-yellow-400' : 'text-slate-600 hover:text-slate-400'}`} title="Toggle featured">
+                <button onClick={() => toggleFeatured(p)} className={`${p.featured ? 'text-primary-600' : 'text-ink-faint hover:text-ink-soft'}`} title="Toggle featured">
                   <FiStar />
                 </button>
               </div>
-              <p className="text-sm text-slate-400 line-clamp-2 mb-3">{p.description}</p>
+              <p className="text-sm text-ink-soft line-clamp-2 mb-3">{p.description}</p>
               <div className="flex justify-end gap-2">
-                <button onClick={() => openEdit(p)} className="px-3 py-1.5 text-xs bg-slate-800 text-slate-300 rounded hover:bg-slate-700"><FiEdit2 className="inline mr-1" />Edit</button>
+                <button onClick={() => openEdit(p)} className="px-3 py-1.5 text-xs bg-surface-800 text-ink-soft rounded hover:bg-surface-700"><FiEdit2 className="inline mr-1" />Edit</button>
                 <button onClick={() => handleDelete(p.id)} className="px-3 py-1.5 text-xs bg-red-500/10 text-red-400 rounded hover:bg-red-500/20"><FiTrash2 className="inline mr-1" />Delete</button>
               </div>
             </div>
@@ -141,9 +141,9 @@ export default function ProjectsManager() {
               <input name="github_url" value={form.github_url} onChange={(e) => setForm({ ...form, github_url: e.target.value })} className="input-field" placeholder="https://" />
             </div>
           </div>
-          <label className="flex items-center gap-3 bg-slate-800 p-3 rounded-lg">
+          <label className="flex items-center gap-3 bg-surface-800 p-3 rounded-lg">
             <input type="checkbox" checked={form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} className="w-4 h-4" />
-            <span className="text-sm text-slate-300">Featured project (shown prominently)</span>
+            <span className="text-sm text-ink-soft">Featured project (shown prominently)</span>
           </label>
           <button type="submit" className="btn-primary w-full justify-center">{editing ? 'Update' : 'Add'} Project</button>
         </form>

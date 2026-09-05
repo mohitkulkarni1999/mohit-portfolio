@@ -15,10 +15,10 @@ export default function BackToTop() {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="fixed bottom-6 right-6 z-40 p-3 rounded-xl bg-primary-600 text-white shadow-glow hover:bg-primary-500 hover:-translate-y-1 transition-all animate-fade-in"
+      className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-primary-500 border-2 border-ink text-ink shadow-glow hover:-translate-y-0.5 transition-transform flex items-center justify-center"
       aria-label="Back to top"
     >
-      <FiArrowUp />
+      <FiArrowUp size={16} />
     </button>
   );
 }

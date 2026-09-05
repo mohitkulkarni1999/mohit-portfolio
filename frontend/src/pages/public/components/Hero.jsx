@@ -1,123 +1,121 @@
-import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail, FiPlus } from 'react-icons/fi';
 
 export default function Hero({ profile, settings }) {
   const highlighted = settings.hero_highlight || profile?.title || 'Software Developer';
+  const first = (profile?.full_name || 'Mohit Kulkarni').split(' ')[0];
+  const last = (profile?.full_name || 'Mohit Kulkarni').split(' ').slice(1).join(' ') || 'Kulkarni';
 
-  const codeLines = [
-    { type: 'keyword', text: 'const' },
-    { type: 'space', text: ' ' },
-    { type: 'var', text: 'developer' },
-    { type: 'space', text: ' ' },
-    { type: 'op', text: '= {' },
-  ];
+  const socials = [
+    profile?.github && { label: 'GITHUB', href: profile.github, icon: FiGithub },
+    profile?.linkedin && { label: 'LINKEDIN', href: profile.linkedin, icon: FiLinkedin },
+    profile?.email && { label: 'EMAIL', href: `mailto:${profile.email}`, icon: FiMail },
+  ].filter(Boolean);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-28">
       <div className="absolute inset-0 bg-hero-grad" />
-      <div className="absolute inset-0 bg-grid opacity-50" />
-      <div className="absolute -top-32 -right-20 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-glow-pulse" />
-      <div className="absolute -bottom-32 -left-20 w-80 h-80 bg-primary-700/10 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: '1.5s' }} />
+      <div className="absolute inset-0 bg-grid opacity-60" />
 
       <div className="container-custom relative grid lg:grid-cols-2 gap-12 items-center py-16 w-full">
-        <div className="animate-slide-up">
-          <div className="inline-flex items-center gap-2.5 mb-6 font-mono text-sm">
-            <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse" />
-            <span className="text-primary-300">[system ready]</span>
-            <span className="text-slate-600">|</span>
-            <span className="text-slate-400">available for opportunities</span>
+        <div>
+          <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-faint mb-6">
+            <span className="border border-ink/40 px-2.5 py-1">SHEET 01</span>
+            <span className="border border-ink/40 px-2.5 py-1">REV A</span>
+            <span className="border border-ink/40 px-2.5 py-1">DWG. MOH-001</span>
           </div>
 
-          <div className="font-mono text-sm text-slate-500 mb-4">
-            <span className="text-primary-400">$</span> whoami
-          </div>
-
-          <h1 className="font-mono text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] mb-4">
-            <span className="text-slate-400 block text-lg sm:text-xl mb-2">&gt; hi, I'm</span>
-            <span className="text-gradient">{profile?.full_name || 'Mohit Kulkarni'}</span>
+          <h1 className="font-display font-extrabold uppercase leading-[0.95] text-ink mb-5">
+            <span className="block text-4xl sm:text-6xl lg:text-7xl">{first}</span>
+            <span className="block text-4xl sm:text-6xl lg:text-7xl">
+              <span className="bg-primary-500 inline-block px-3 pb-1 rotate-[-1deg]">{last}</span>
+            </span>
           </h1>
 
-          <p className="font-mono text-primary-300 mb-5 text-sm sm:text-base">
-            <span className="text-amber-400">export const </span>role <span className="text-slate-500">=</span> <span className="text-amber-300">"{highlighted}"</span>
-            <span className="cursor-blink text-primary-400">_</span>
-          </p>
+          <div className="flex items-center gap-3 mb-6">
+            <span className="w-8 h-[3px] bg-primary-500" />
+            <p className="font-mono text-sm sm:text-base font-bold uppercase tracking-[0.3em] text-primary-600">
+              {highlighted}
+            </p>
+            <span className="hidden sm:inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-ink-faint border border-ink/30 px-2 py-0.5">
+              <span className="w-1.5 h-1.5 bg-primary-500" /> OPEN TO WORK
+            </span>
+          </div>
 
-          <p className="text-slate-400 text-base sm:text-lg mb-8 max-w-xl leading-relaxed">
-            {settings.hero_subtitle || profile?.bio || 'I build elegant, fast, and scalable web applications that solve real-world problems.'}
+          <p className="text-ink-soft text-base sm:text-lg mb-9 max-w-xl leading-relaxed">
+            {settings.hero_subtitle || profile?.bio || 'I design and build software systems — from spec to shipped product. Clean code, measurable results.'}
           </p>
 
           <div className="flex flex-wrap gap-4 items-center">
             <a href="#projects" className="btn-primary">
-              <span className="text-surface-950">$ ./view_work</span>
-              <FiArrowRight className="text-surface-950" />
+              View Work <FiArrowRight size={14} />
             </a>
             {profile?.resume_url && (
               <a href={profile.resume_url} target="_blank" rel="noreferrer" className="btn-ghost">
-                <FiDownload className="text-amber-400" /> resume --download
+                <FiDownload size={14} className="text-primary-600" /> Resume
               </a>
             )}
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-10 font-mono text-sm">
-            {profile?.github && (
-              <a href={profile.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-primary-300 transition-colors">
-                <FiGithub /> github
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 font-mono text-xs font-semibold uppercase tracking-widest">
+            {socials.map((s, i) => (
+              <a key={s.label} href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="flex items-center gap-2 text-ink-soft hover:text-primary-600 transition-colors group">
+                <span className="text-ink-faint">{String(i + 1).padStart(2, '0')}</span>
+                <s.icon size={14} className="group-hover:text-primary-600" />
+                <span className="border-b border-dotted border-ink-soft/50 group-hover:border-primary-600">{s.label}</span>
               </a>
-            )}
-            {profile?.linkedin && (
-              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-primary-300 transition-colors">
-                <FiLinkedin /> linkedin
-              </a>
-            )}
-            {profile?.email && (
-              <a href={`mailto:${profile.email}`} className="flex items-center gap-2 text-slate-400 hover:text-primary-300 transition-colors">
-                <FiMail /> email me
-              </a>
-            )}
+            ))}
           </div>
         </div>
 
-        <div className="hidden lg:block animate-slide-in-right">
-          <div className="card relative overflow-hidden p-0 shadow-glow">
-            <div className="flex items-center gap-2 px-4 py-3 bg-surface-900/90 border-b border-surface-700/60">
-              <span className="terminal-dots">
-                <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-              </span>
-              <span className="ml-3 text-xs text-slate-500 font-mono">mohit@portfolio: ~/repl</span>
+        <div className="hidden lg:block">
+          <div className="card relative shadow-card border-2 border-ink/70 p-0">
+            <span className="absolute -top-2 -left-2 text-primary-500" aria-hidden><FiPlus size={14} /></span>
+            <span className="absolute -top-2 -right-2 text-primary-500" aria-hidden><FiPlus size={14} /></span>
+            <span className="absolute -bottom-2 -left-2 text-primary-500" aria-hidden><FiPlus size={14} /></span>
+            <span className="absolute -bottom-2 -right-2 text-primary-500" aria-hidden><FiPlus size={14} /></span>
+
+            <div className="flex items-center justify-between px-4 py-3 bg-surface-900 border-b-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink">
+              <span>Blueprint: Mohit Portfolio</span>
+              <span className="text-ink-faint">Sheet 01 / 13</span>
             </div>
 
-            <div className="p-6 font-mono text-sm leading-[1.9] relative">
-              <pre className="text-slate-300 whitespace-pre-wrap overflow-hidden">
-                <span className="text-primary-400">$ </span><span className="text-amber-300">node</span> developer.js
-                {'\n'}
-                {codeLines.map((tok, i) => (
-                  <span key={i} className={
-                    tok.type === 'keyword' ? 'text-emerald-400'
-                    : tok.type === 'var' ? 'text-primary-300'
-                    : tok.type === 'op' ? 'text-slate-400'
-                    : 'text-slate-500'
-                  }>{tok.text}</span>
-                ))}
-                {'\n'}
-                <span className="text-slate-500">  name:</span> <span className="text-amber-300">"{profile?.full_name || 'Mohit'}"</span>,
-                {'\n'}
-                <span className="text-slate-500">  role:</span> <span className="text-amber-300">"{highlighted}"</span>,
-                {'\n'}
-                <span className="text-slate-500">  stack:</span> [<span className="text-primary-300">'React'</span>, <span className="text-primary-300">'Node'</span>, <span className="text-primary-300">'SQL'</span>, <span className="text-primary-300">'C#'</span>],
-                {'\n'}
-                <span className="text-slate-500">  open_to_work:</span> <span className="text-emerald-400">true</span>,
-                {'\n'}
-                <span className="text-slate-500">  ready:</span> <span className="text-emerald-400">()</span> <span className="text-amber-300">=&gt;</span> <span className="text-emerald-400">true</span>,
-                {'\n'}
-                <span className="text-slate-500">{'};'}</span>
-                {'\n'}
-                <span className="text-primary-400">$ </span><span className="cursor-blink text-primary-300">▍</span>
-              </pre>
-              <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-primary-400/5 to-transparent animate-scanner pointer-events-none" />
+            <div className="relative bg-grid px-6 py-8 h-[340px] overflow-hidden">
+              <div className="absolute inset-y-6 left-6 w-px border-l border-dashed border-ink/50" aria-hidden />
+              <div className="absolute inset-y-6 right-6 w-px border-l border-dashed border-ink/50" aria-hidden />
+              <div className="absolute inset-x-6 top-6 h-px border-t border-dashed border-ink/50" aria-hidden />
+              <div className="absolute inset-x-6 bottom-6 h-px border-t border-dashed border-ink/50" aria-hidden />
+
+              <div className="absolute top-2 left-8 font-mono text-[9px] uppercase tracking-widest text-ink-faint" aria-hidden>▲ 1.83 m</div>
+
+              <div className="relative h-full flex items-center justify-center">
+                <span className="relative font-display font-extrabold text-[130px] leading-none text-primary-500/25 select-none">
+                  {first[0]}
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="block w-10 h-10 border-2 border-primary-600 rotate-45" aria-hidden />
+                  </span>
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="block w-1 h-1 bg-primary-600 rounded-full" aria-hidden />
+                  </span>
+                </span>
+
+                <div className="absolute right-8 top-1/2 -translate-y-1/2 max-w-[46%] space-y-2.5">
+                  <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-ink-faint">Core Stack</p>
+                  <p className="font-mono text-xs font-bold text-ink border-b border-ink/20 pb-1">React · Node</p>
+                  <p className="font-mono text-xs font-bold text-ink border-b border-ink/20 pb-1">SQL · Docker</p>
+                  <p className="font-mono text-xs font-bold text-ink border-b border-ink/20 pb-1">C# · AWS</p>
+                </div>
+              </div>
+
+              <div className="absolute bottom-3 right-3 font-mono text-[9px] uppercase tracking-widest text-ink-faint" aria-hidden>
+                ± tolerance 0.01
+              </div>
             </div>
 
-            <div className="absolute -bottom-12 -right-12 w-40 h-40 bg-primary-500/15 rounded-full blur-2xl" />
+            <div className="grid grid-cols-3 border-t-2 border-ink/70 font-mono text-[10px] uppercase tracking-widest text-ink-soft">
+              <div className="px-4 py-2.5 border-r border-ink/40">🧭 Scale 1:1</div>
+              <div className="px-4 py-2.5 border-r border-ink/40">Dims in mm</div>
+              <div className="px-4 py-2.5">Rev A</div>
+            </div>
           </div>
         </div>
       </div>

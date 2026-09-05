@@ -69,31 +69,31 @@ export default function SkillsManager() {
     groups[c].push(s);
   });
 
-  if (loading) return <div className="text-slate-400">Loading...</div>;
+  if (loading) return <div className="text-ink-soft">Loading...</div>;
 
   return (
     <div className="animate-fade-in">
       <div className="flex justify-between items-center mb-6">
-        <p className="text-slate-400 text-sm">{skills.length} skills</p>
+        <p className="text-ink-soft text-sm">{skills.length} skills</p>
         <button onClick={openAdd} className="btn-primary text-sm py-2"><FiPlus /> Add Skill</button>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
         {Object.entries(groups).map(([cat, items]) => (
           <div key={cat} className="card p-5">
-            <h3 className="font-semibold mb-4 capitalize text-primary-400">{cat}</h3>
+            <h3 className="font-semibold mb-4 capitalize text-primary-600">{cat}</h3>
             <div className="space-y-3">
               {items.map((skill) => (
-                <div key={skill.id} className="flex items-center justify-between p-3 bg-slate-800 rounded-lg">
+                <div key={skill.id} className="flex items-center justify-between p-3 bg-surface-800 rounded-lg">
                   <div className="flex-1">
                     <p className="text-sm font-medium">{skill.name}</p>
-                    <div className="h-1.5 bg-slate-700 rounded-full mt-2 overflow-hidden">
+                    <div className="h-1.5 bg-surface-700 rounded-full mt-2 overflow-hidden">
                       <div className="h-full bg-primary-500 rounded-full" style={{ width: `${skill.proficiency}%` }} />
                     </div>
                   </div>
                   <div className="flex items-center gap-2 ml-4">
-                    <button onClick={() => openEdit(skill)} className="p-2 text-slate-400 hover:text-primary-400"><FiEdit2 /></button>
-                    <button onClick={() => handleDelete(skill.id)} className="p-2 text-slate-400 hover:text-red-400"><FiTrash2 /></button>
+                    <button onClick={() => openEdit(skill)} className="p-2 text-ink-soft hover:text-primary-600"><FiEdit2 /></button>
+                    <button onClick={() => handleDelete(skill.id)} className="p-2 text-ink-soft hover:text-red-400"><FiTrash2 /></button>
                   </div>
                 </div>
               ))}

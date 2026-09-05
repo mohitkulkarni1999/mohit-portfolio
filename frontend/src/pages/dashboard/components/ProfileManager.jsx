@@ -44,12 +44,12 @@ export default function ProfileManager() {
     }
   };
 
-  if (loading) return <div className="text-slate-400">Loading...</div>;
+  if (loading) return <div className="text-ink-soft">Loading...</div>;
 
   return (
     <form onSubmit={handleSubmit} className="max-w-3xl space-y-6 animate-fade-in">
       <div className="card p-6">
-        <h2 className="text-lg font-bold mb-4 text-primary-400">Basic Information</h2>
+        <h2 className="text-lg font-bold mb-4 text-primary-600">Basic Information</h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {fields.filter((f) => f.type === 'text').slice(0, 6).map((field) => (
             <div key={field.key}>
@@ -65,7 +65,7 @@ export default function ProfileManager() {
       </div>
 
       <div className="card p-6">
-        <h2 className="text-lg font-bold mb-4 text-primary-400">Social Links</h2>
+        <h2 className="text-lg font-bold mb-4 text-primary-600">Social Links</h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {fields.filter((f) => ['github', 'linkedin', 'twitter', 'website'].includes(f.key)).map((field) => (
             <div key={field.key}>

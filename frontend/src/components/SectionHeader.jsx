@@ -2,20 +2,22 @@ export default function SectionHeader({ eyebrow, title, subtitle, center = true 
   return (
     <div className={center ? 'text-center' : 'text-left'}>
       {eyebrow && (
-        <p className="font-mono text-primary-500/80 text-sm mb-2">
-          <span className="text-slate-600 pr-2">//</span>
-          {eyebrow}
+        <p className="section-eyebrow justify-center">
+          <span className="inline-block w-4 h-px bg-primary-600" aria-hidden />
+          <span className="mx-1">♦</span>
+          <span className="text-primary-600">{eyebrow}</span>
+          <span className="mx-1">♦</span>
+          <span className="inline-block w-4 h-px bg-primary-600" aria-hidden />
         </p>
       )}
-      <h2 className="font-mono text-2xl sm:text-4xl font-bold text-white flex items-center justify-start gap-3 flex-wrap">
-        <span className="text-primary-400 hidden sm:inline" aria-hidden>&gt;</span>
-        {title}
-        <span className="inline-block w-2 h-6 sm:h-8 bg-primary-400 cursor-blink" aria-hidden />
-      </h2>
+      <h2 className="section-title">{title}</h2>
+      <div className="mt-4 flex items-center gap-2 justify-center" aria-hidden>
+        <span className="inline-block w-1 h-1 bg-primary-600 rotate-45" />
+        <span className="inline-block h-[3px] w-24 bg-primary-500" />
+        <span className="inline-block w-1 h-1 bg-primary-600 rotate-45" />
+      </div>
       {subtitle && (
-        <p className={`text-slate-400 mt-4 max-w-2xl font-mono text-sm sm:text-base leading-relaxed ${center ? 'mx-auto' : ''}`}>
-          {subtitle}
-        </p>
+        <p className={`section-subtitle ${center ? 'mx-auto text-center' : ''}`}>{subtitle}</p>
       )}
     </div>
   );

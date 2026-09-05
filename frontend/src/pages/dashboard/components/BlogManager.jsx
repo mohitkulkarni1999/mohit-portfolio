@@ -79,12 +79,12 @@ export default function BlogManager() {
     }
   };
 
-  if (loading) return <div className="text-slate-400">Loading...</div>;
+  if (loading) return <div className="text-ink-soft">Loading...</div>;
 
   return (
     <div className="animate-fade-in">
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-        <p className="text-slate-400 text-sm">{posts.length} posts</p>
+        <p className="text-ink-soft text-sm">{posts.length} posts</p>
         <button onClick={openAdd} className="btn-primary text-sm py-2.5"><FiPlus /> New Post</button>
       </div>
 
@@ -93,18 +93,18 @@ export default function BlogManager() {
           <div key={p.id} className="card-hover p-5 flex items-start gap-4">
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
-                <h3 className="font-semibold text-white truncate">{p.title}</h3>
-                {!p.published && <span className="chip !bg-amber-500/10 !text-amber-300 !border-amber-500/30">Draft</span>}
+                <h3 className="font-semibold text-ink truncate">{p.title}</h3>
+                {!p.published && <span className="chip !bg-primary-500/10 !text-primary-600 !border-primary-500/30">Draft</span>}
               </div>
-              <p className="text-sm text-slate-500 mb-1">/{p.slug} · {p.read_minutes} min read · {new Date(p.created_at).toLocaleDateString()}</p>
-              <p className="text-sm text-slate-400 line-clamp-1">{p.excerpt}</p>
+              <p className="text-sm text-ink-faint mb-1">/{p.slug} · {p.read_minutes} min read · {new Date(p.created_at).toLocaleDateString()}</p>
+              <p className="text-sm text-ink-soft line-clamp-1">{p.excerpt}</p>
             </div>
             <div className="flex gap-1 shrink-0">
-              <button onClick={() => togglePublished(p)} className="p-2 text-slate-400 hover:text-yellow-300" title={p.published ? 'Unpublish' : 'Publish'}>
+              <button onClick={() => togglePublished(p)} className="p-2 text-ink-soft hover:text-primary-600" title={p.published ? 'Unpublish' : 'Publish'}>
                 {p.published ? <FiEye /> : <FiEyeOff />}
               </button>
-              <button onClick={() => openEdit(p)} className="p-2 text-slate-400 hover:text-primary-300"><FiEdit2 /></button>
-              <button onClick={() => handleDelete(p.id)} className="p-2 text-slate-400 hover:text-red-400"><FiTrash2 /></button>
+              <button onClick={() => openEdit(p)} className="p-2 text-ink-soft hover:text-primary-700"><FiEdit2 /></button>
+              <button onClick={() => handleDelete(p.id)} className="p-2 text-ink-soft hover:text-red-400"><FiTrash2 /></button>
             </div>
           </div>
         ))}
@@ -145,7 +145,7 @@ export default function BlogManager() {
               <button
                 type="button"
                 onClick={() => setForm({ ...form, published: !form.published })}
-                className={`w-full py-3 rounded-xl text-sm font-medium transition-colors ${form.published ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/10 text-amber-300 border border-amber-500/30'}`}
+                className={`w-full py-3 rounded-xl text-sm font-medium transition-colors ${form.published ? 'bg-primary-500/10 text-primary-600 border border-primary-500/30' : 'bg-primary-500/10 text-primary-600 border border-primary-500/30'}`}
               >
                 {form.published ? 'Published' : 'Draft'}
               </button>

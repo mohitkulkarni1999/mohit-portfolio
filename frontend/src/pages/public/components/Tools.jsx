@@ -18,32 +18,37 @@ export default function Tools({ settings }) {
     return acc;
   }, {});
 
+  let row = 0;
+
   return (
     <section id="tools" className="section-pad bg-surface-900/40">
       <div className="container-custom">
         <SectionHeader
-          eyebrow="package.json --dependencies"
+          eyebrow="factory spec 05"
           title={settings.section_tools_heading || 'Tools & Technologies'}
           subtitle={settings.section_tools_subtitle}
         />
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {Object.entries(grouped).map(([cat, items]) => (
-            <div key={cat} className="card overflow-hidden p-0">
-              <div className="px-5 py-3 bg-surface-900/90 border-b border-surface-700/60 font-mono text-xs text-slate-400 flex items-center justify-between">
-                <span className="uppercase tracking-wider">{cat}</span>
-                <span className="text-slate-600">{items.length}</span>
+            <div key={cat} className="card border-2 border-ink/70 shadow-card p-0">
+              <div className="px-5 py-3 bg-surface-900 border-b-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink-soft flex items-center justify-between">
+                <span className="font-bold">{cat}</span>
+                <span className="text-ink-faint">{String(items.length).padStart(2, '0')}</span>
               </div>
-              <div className="p-4 space-y-1.5 font-mono">
-                {items.map((tool, i) => (
-                  <div key={tool.id} className="flex items-center gap-2 text-sm rounded-md px-2 py-1.5 hover:bg-surface-900/70 transition-colors animate-slide-up" style={{ animationDelay: `${i * 60}ms` }}>
-                    <span className="text-surface-700 select-none">$</span>
-                    <div className="min-w-0 flex-1">
-                      <span className="text-slate-200">{tool.name}</span>
-                      {tool.description && <span className="text-slate-600 hidden sm:inline"> — {tool.description}</span>}
+              <div className="divide-y divide-ink/10">
+                {items.map((tool) => {
+                  row += 1;
+                  return (
+                    <div key={tool.id} className="flex items-start gap-3 px-4 py-2.5 font-mono text-sm">
+                      <span className="text-ink-faint text-xs pt-1 shrink-0">{String(row).padStart(2, '0')}</span>
+                      <div className="min-w-0 flex-1">
+                        <span className="text-ink font-semibold">{tool.name}</span>
+                        {tool.description && <span className="text-ink-faint text-xs hidden sm:inline"> — {tool.description}</span>}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}

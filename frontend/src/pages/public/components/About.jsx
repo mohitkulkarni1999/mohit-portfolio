@@ -1,4 +1,4 @@
-import { FiDownload, FiArrowRight } from 'react-icons/fi';
+import { FiDownload, FiArrowRight, FiPlus } from 'react-icons/fi';
 import SectionHeader from '../../../components/SectionHeader';
 
 export default function About({ profile, settings }) {
@@ -13,67 +13,90 @@ export default function About({ profile, settings }) {
     <section id="about" className="section-pad">
       <div className="container-custom">
         <SectionHeader
-          eyebrow="about --info"
+          eyebrow="dwg. note 02"
           title={settings.section_about_heading || 'About Me'}
           subtitle={settings.section_about_subtitle}
         />
 
         <div className="mt-14 grid lg:grid-cols-2 gap-10 items-start">
-          <div className="animate-slide-up space-y-6">
-            <p className="text-slate-300 text-lg leading-relaxed">
-              <span className="text-primary-400">$</span> {profile?.bio || 'Passionate software developer dedicated to building high-quality web applications. Always eager to learn new technologies and solve complex problems.'}
-            </p>
-            <div className="card overflow-hidden p-0">
-              <div className="px-5 py-3 bg-surface-900/90 border-b border-surface-700/60 font-mono text-xs text-slate-500 flex items-center gap-2">
-                <span className="text-primary-400">$</span> neofetch ./me
+          <div className="space-y-6">
+            <div className="card relative border-2 border-ink/70 shadow-card p-7">
+              <span className="absolute -top-2 -left-2 text-primary-500" aria-hidden><FiPlus size={14} /></span>
+              <span className="absolute -bottom-2 -right-2 text-primary-500" aria-hidden><FiPlus size={14} /></span>
+              <div className="flex items-center justify-between mb-4">
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-faint">Bio / Profile</p>
+                <span className="stamp">Spec. Sheet</span>
               </div>
-              <div className="p-5 grid sm:grid-cols-2 gap-4 font-mono">
+              <p className="text-ink-soft text-base sm:text-lg leading-relaxed">
+                {profile?.bio || 'Passionate software developer dedicated to building high-quality web applications. Always eager to learn new technologies and solve complex problems.'}
+              </p>
+            </div>
+
+            <div className="card border-2 border-ink/70 shadow-card p-0">
+              <div className="px-5 py-3 bg-surface-900 border-b-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink-soft flex items-center justify-between">
+                <span>Data Sheet — Contact Pts</span>
+                <span className="text-ink-faint">F-4</span>
+              </div>
+              <div className="p-5 grid sm:grid-cols-2 gap-x-8 gap-y-4 font-mono">
                 {facts.map(([label, value]) => (
-                  <div key={label} className="flex items-start gap-3">
-                    <span className="text-primary-400 mt-0.5">{'>'}</span>
+                  <div key={label} className="flex items-start gap-2 min-w-0">
+                    <span className="text-primary-600 mt-0.5 shrink-0">[{label}]</span>
                     <div className="min-w-0">
-                      <p className="text-xs text-slate-500 uppercase tracking-wide">{label}:</p>
-                      <p className="text-slate-200 text-sm truncate">{value}</p>
+                      <p className="text-xs text-ink-faint uppercase tracking-wide">{label.toUpperCase()}:</p>
+                      <p className="text-ink text-sm truncate">{value}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="flex flex-wrap gap-3">
+
+            <div className="flex flex-wrap gap-4">
               {profile?.resume_url && (
                 <a href={profile.resume_url} target="_blank" rel="noreferrer" className="btn-ghost !py-2.5 !px-5 text-xs">
-                  <FiDownload className="text-amber-400" /> resume.pdf
+                  <FiDownload className="text-primary-600" /> resume.pdf
                 </a>
               )}
               <a href="#contact" className="btn-primary !py-2.5 !px-5 text-xs">
-                <span className="text-surface-950">git</span> <span className="text-surface-950">connect</span> <FiArrowRight className="text-surface-950" />
+                connect <FiArrowRight size={14} />
               </a>
             </div>
           </div>
 
-          <div className="card overflow-hidden p-0 animate-slide-in-right hover:border-primary-500/40 transition-colors">
-            <div className="flex items-center gap-2 px-4 py-2.5 bg-surface-900/90 border-b border-surface-700/60">
-              <span className="terminal-dots">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-              </span>
-              <span className="ml-3 text-xs text-slate-500 font-mono">~/portfolio/README.md</span>
+          <div className="card relative border-2 border-ink/70 shadow-card p-0">
+            <div className="flex items-center justify-between px-4 py-2.5 bg-surface-900 border-b-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink-soft">
+              <span>Workmanship Notes</span>
+              <span className="text-ink-faint">NTS</span>
             </div>
-            <div className="p-6 font-mono text-sm leading-7">
-              <p className="text-emerald-400 mb-1"># Mohit Kulkarni</p>
-              <p className="text-slate-500 mb-3">// full-stack developer & problem solver</p>
-              <p className="text-slate-300 mb-1">
-                <span className="text-primary-400">const ABOUT</span> <span className="text-slate-500">=</span> <span className="text-amber-300">"I write code that ships."</span>
-              </p>
-              <div className="text-slate-400 space-y-1 mt-4">
-                <p><span className="text-primary-400">-</span> builds products end-to-end</p>
-                <p><span className="text-primary-400">-</span> cares about clean, readable code</p>
-                <p><span className="text-primary-400">-</span> ships fast, iterates faster</p>
-                <p><span className="text-primary-400">-</span> always learning <span className="text-amber-300">git push --force</span> to skill ceiling</p>
+
+            <div className="relative bg-grid p-7 sm:p-9">
+              <div className="flex items-center gap-3 mb-8">
+                <span className="w-10 h-10 bg-primary-500 border border-ink flex items-center justify-center font-display font-extrabold text-ink shadow-glow">
+                  {profile?.full_name?.split(' ').map((w) => w[0]).slice(0, 2).join('') || 'MK'}
+                </span>
+                <div>
+                  <p className="font-mono font-bold uppercase tracking-widest text-ink">{profile?.full_name || 'Mohit Kulkarni'}</p>
+                  <p className="font-mono text-xs text-ink-faint">classification: FULL-STACK</p>
+                </div>
               </div>
-              <div className="mt-5 pt-4 border-t border-surface-700/50 text-xs text-slate-600">
-                <span className="text-primary-400">$</span> git status <span className="text-emerald-400">── clean · ready to collaborate</span>
+
+              <ul className="space-y-4 font-mono text-sm">
+                {[
+                  'builds products end-to-end',
+                  'cares about clean, readable code',
+                  'ships fast, iterates faster',
+                  'systematic — spec first, then execute',
+                ].map((line, i) => (
+                  <li key={i} className="flex items-center gap-3 text-ink-soft">
+                    <span className="w-4 h-px bg-primary-500 shrink-0" aria-hidden />
+                    <span className="border-b border-dotted border-ink/25 flex-1 pb-0.5">{line}</span>
+                    <span className="text-ink-faint text-xs">{String(i + 1).padStart(2, '0')}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 pt-4 border-t-2 border-ink/70 font-mono text-xs text-ink-faint flex items-center justify-between">
+                <span>status: accepting_projects</span>
+                <span className="text-primary-600 font-bold">[READY]</span>
               </div>
             </div>
           </div>

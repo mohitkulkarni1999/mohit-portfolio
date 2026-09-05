@@ -25,7 +25,7 @@ const FIELD_COMPONENTS = {
   check: ({ field, value, onChange }) => (
     <label className="flex items-center gap-3 bg-surface-900 p-3 rounded-xl cursor-pointer">
       <input type="checkbox" checked={!!value} onChange={(e) => onChange(e.target.checked)} className="w-4 h-4 accent-primary-500" />
-      <span className="text-sm text-slate-300">{field.label}</span>
+      <span className="text-sm text-ink-soft">{field.label}</span>
     </label>
   ),
 };
@@ -109,17 +109,17 @@ export default function CrudManager({ endpoint, title, columns, summary, icon: I
     }
   };
 
-  if (loading) return <div className="text-slate-400">Loading...</div>;
+  if (loading) return <div className="text-ink-soft">Loading...</div>;
 
   return (
     <div className="animate-fade-in">
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-        <p className="text-slate-400 text-sm">{items.length} {title.toLowerCase()}</p>
+        <p className="text-ink-soft text-sm">{items.length} {title.toLowerCase()}</p>
         <button onClick={openAdd} className="btn-primary text-sm py-2.5"><FiPlus /> Add {title}</button>
       </div>
 
       {items.length === 0 ? (
-        <div className="card p-12 text-center text-slate-500">
+        <div className="card p-12 text-center text-ink-faint">
           <Icon className="mx-auto text-4xl mb-3 opacity-50" />
           <p>No {title.toLowerCase()} yet. Click "Add {title}" to get started.</p>
         </div>
@@ -129,15 +129,15 @@ export default function CrudManager({ endpoint, title, columns, summary, icon: I
             <div key={item.id} className="card-hover p-5 animate-slide-up" style={{ animationDelay: `${i * 60}ms` }}>
               <div className="flex items-start justify-between gap-2 mb-2">
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-semibold text-white truncate">{summary ? summary(item) : (item.title || item.name || 'Item')}</h3>
-                  {item.issuer && <p className="text-sm text-primary-400 truncate">{item.issuer}</p>}
+                  <h3 className="font-semibold text-ink truncate">{summary ? summary(item) : (item.title || item.name || 'Item')}</h3>
+                  {item.issuer && <p className="text-sm text-primary-600 truncate">{item.issuer}</p>}
                 </div>
                 <div className="flex gap-1 shrink-0">
-                  <button onClick={() => openEdit(item)} className="p-2 text-slate-400 hover:text-primary-300"><FiEdit2 /></button>
-                  <button onClick={() => handleDelete(item.id)} className="p-2 text-slate-400 hover:text-red-400"><FiTrash2 /></button>
+                  <button onClick={() => openEdit(item)} className="p-2 text-ink-soft hover:text-primary-700"><FiEdit2 /></button>
+                  <button onClick={() => handleDelete(item.id)} className="p-2 text-ink-soft hover:text-red-400"><FiTrash2 /></button>
                 </div>
               </div>
-              {item.description && <p className="text-sm text-slate-400 line-clamp-2">{item.description}</p>}
+              {item.description && <p className="text-sm text-ink-soft line-clamp-2">{item.description}</p>}
             </div>
           ))}
         </div>

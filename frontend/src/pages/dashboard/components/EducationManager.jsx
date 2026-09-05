@@ -62,12 +62,12 @@ export default function EducationManager() {
     }
   };
 
-  if (loading) return <div className="text-slate-400">Loading...</div>;
+  if (loading) return <div className="text-ink-soft">Loading...</div>;
 
   return (
     <div className="animate-fade-in">
       <div className="flex justify-between items-center mb-6">
-        <p className="text-slate-400 text-sm">{items.length} entries</p>
+        <p className="text-ink-soft text-sm">{items.length} entries</p>
         <button onClick={openAdd} className="btn-primary text-sm py-2"><FiPlus /> Add Education</button>
       </div>
 
@@ -77,12 +77,12 @@ export default function EducationManager() {
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="font-semibold">{item.degree}</h3>
-                <p className="text-primary-400 text-sm">{item.institution}</p>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-primary-600 text-sm">{item.institution}</p>
+                <p className="text-xs text-ink-faint mt-1">
                   {new Date(item.start_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} - {item.end_date ? new Date(item.end_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : 'Present'}
                 </p>
                 {(item.field_of_study || item.grade) && (
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-ink-soft mt-1">
                     {item.field_of_study && <>Field: {item.field_of_study}</>}
                     {item.field_of_study && item.grade && <span className="mx-2">·</span>}
                     {item.grade && <>Grade: {item.grade}</>}
@@ -90,8 +90,8 @@ export default function EducationManager() {
                 )}
               </div>
               <div className="flex gap-2">
-                <button onClick={() => openEdit(item)} className="p-2 text-slate-400 hover:text-primary-400"><FiEdit2 /></button>
-                <button onClick={() => handleDelete(item.id)} className="p-2 text-slate-400 hover:text-red-400"><FiTrash2 /></button>
+                <button onClick={() => openEdit(item)} className="p-2 text-ink-soft hover:text-primary-600"><FiEdit2 /></button>
+                <button onClick={() => handleDelete(item.id)} className="p-2 text-ink-soft hover:text-red-400"><FiTrash2 /></button>
               </div>
             </div>
           </div>

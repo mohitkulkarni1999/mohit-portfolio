@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { FiMenu, FiX, FiGithub, FiLinkedin, FiTwitter, FiDownload, FiSearch } from 'react-icons/fi';
+import { FiMenu, FiX, FiGithub, FiLinkedin, FiTwitter, FiDownload, FiPlus } from 'react-icons/fi';
 
 const SECTION_LABELS = {
-  about: 'about', stats: null, skills: 'skills', services: 'services',
-  projects: 'projects', tools: 'tools', experience: 'experience',
-  education: 'education', certifications: 'certs',
-  achievements: 'awards', testimonials: 'reviews',
-  blog: 'blog', contact: 'contact',
+  about: 'About', stats: null, skills: 'Skills', services: 'Services',
+  projects: 'Projects', tools: 'Tools', experience: 'Experience',
+  education: 'Education', certifications: 'Certs',
+  achievements: 'Achievements', testimonials: 'Reviews',
+  blog: 'Blog', contact: 'Contact',
 };
 
 export default function Navbar({ profile, settings }) {
@@ -30,69 +30,73 @@ export default function Navbar({ profile, settings }) {
 
   const navItems = Object.entries(SECTION_LABELS)
     .filter(([id, label]) => label && settings[`show_${id}`] !== false)
-    .map(([id, label]) => ({ id, label }));
+    .map(([id, label]) => ({ id, label: label.toUpperCase() }));
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'bg-surface-950/90 backdrop-blur-xl border-b border-surface-700/60 py-2.5 shadow-card' : 'bg-transparent py-5'}`}>
+    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${scrolled ? 'bg-surface-950/95 backdrop-blur border-b-4 border-double border-ink/70 shadow-card py-2' : 'bg-surface-950/60 border-b border-surface-700 py-4'}`}>
       <div className="container-custom flex items-center justify-between gap-4">
-        <a href="#home" className="flex items-center gap-2.5 group font-mono">
-          <span className="w-9 h-9 rounded-md bg-surface-900 border border-primary-500/40 flex items-center justify-center text-primary-400 font-bold text-sm group-hover:border-primary-400 group-hover:text-primary-300 transition-colors">
-            {'>_'}
+        <a href="#home" className="flex items-center gap-3 group">
+          <span className="relative w-9 h-9 bg-primary-500 border border-ink flex items-center justify-center shadow-glow group-hover:-translate-y-0.5 transition-transform">
+            <FiPlus className="text-ink" size={16} />
+            <span className="absolute -top-0.5 -left-0.5 w-2 h-2 border-t border-l border-primary-600" />
+            <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 border-b border-r border-primary-600" />
           </span>
-          <span className="font-mono font-bold text-sm text-slate-300">
-            <span className="text-primary-400">~</span>/{profile?.full_name?.split(' ')[0].toLowerCase() || 'mohit'}
-            <span className="text-primary-400 cursor-blink">_</span>
+          <span className="leading-tight">
+            <span className="block font-mono font-bold uppercase tracking-widest text-ink text-sm">
+              {profile?.full_name?.split(' ')[0] || 'Mohit'}<span className="text-primary-600">.</span>K
+            </span>
+            <span className="block font-mono text-[10px] uppercase tracking-[0.25em] text-ink-faint">
+              Design &amp; Development
+            </span>
           </span>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-1 font-mono text-sm">
-          {navItems.slice(0, 8).map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className={`px-3 py-2 rounded-md transition-colors ${
-                active === item.id ? 'text-primary-300 bg-primary-500/10 border border-primary-500/20' : 'text-slate-400 hover:text-primary-300 border border-transparent'
-              }`}
-            >
-              ./{item.label}
-            </a>
+        <nav className="hidden lg:flex items-center font-mono text-xs font-semibold uppercase tracking-widest">
+          {navItems.slice(0, 8).map((item, i) => (
+            <span key={item.id} className="flex items-center">
+              {i > 0 && <span className="text-ink-faint mx-2" aria-hidden>/</span>}
+              <a
+                href={`#${item.id}`}
+                className={`px-1 py-2 border-t-2 border-transparent transition-colors ${
+                  active === item.id ? 'text-primary-600 border-primary-600' : 'text-ink-soft hover:text-ink'
+                }`}
+              >
+                {item.label}
+              </a>
+            </span>
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
-          <span className="flex items-center gap-1.5 text-xs font-mono text-slate-600 border border-surface-700 rounded-md px-2.5 py-1.5">
-            <FiSearch size={12} /> Ctrl+K
-          </span>
-          {profile?.github && <a href={profile.github} target="_blank" rel="noreferrer" className="p-2 text-slate-400 hover:text-primary-300 transition-colors"><FiGithub size={16} /></a>}
-          {profile?.linkedin && <a href={profile.linkedin} target="_blank" rel="noreferrer" className="p-2 text-slate-400 hover:text-primary-300 transition-colors"><FiLinkedin size={16} /></a>}
-          {profile?.twitter && <a href={profile.twitter} target="_blank" rel="noreferrer" className="p-2 text-slate-400 hover:text-primary-300 transition-colors"><FiTwitter size={16} /></a>}
+        <div className="hidden lg:flex items-center gap-2">
+          {profile?.github && <a href={profile.github} target="_blank" rel="noreferrer" className="w-8 h-8 border border-ink/40 flex items-center justify-center text-ink-soft hover:text-primary-600 hover:border-primary-500 transition-colors"><FiGithub size={14} /></a>}
+          {profile?.linkedin && <a href={profile.linkedin} target="_blank" rel="noreferrer" className="w-8 h-8 border border-ink/40 flex items-center justify-center text-ink-soft hover:text-primary-600 hover:border-primary-500 transition-colors"><FiLinkedin size={14} /></a>}
+          {profile?.twitter && <a href={profile.twitter} target="_blank" rel="noreferrer" className="w-8 h-8 border border-ink/40 flex items-center justify-center text-ink-soft hover:text-primary-600 hover:border-primary-500 transition-colors"><FiTwitter size={14} /></a>}
           {profile?.resume_url ? (
-            <a href={profile.resume_url} target="_blank" rel="noreferrer" className="btn-primary !px-4 !py-2 text-xs">
-              <FiDownload className="text-surface-950" size={14} /> resume
+            <a href={profile.resume_url} target="_blank" rel="noreferrer" className="btn-primary !px-4 !py-2 !text-[10px]">
+              <FiDownload size={13} /> Resume
             </a>
           ) : (
-            <a href="#contact" className="btn-ghost !px-4 !py-2 text-xs">hire_me()</a>
+            <a href="#contact" className="btn-ghost !px-4 !py-2 !text-[10px]">Hire</a>
           )}
         </div>
 
-        <button onClick={() => setOpen(!open)} className="lg:hidden p-2 text-slate-300 hover:text-primary-300">
-          {open ? <FiX size={22} /> : <FiMenu size={22} />}
+        <button onClick={() => setOpen(!open)} className="lg:hidden w-9 h-9 border border-ink/40 flex items-center justify-center text-ink">
+          {open ? <FiX size={18} /> : <FiMenu size={18} />}
         </button>
       </div>
 
       {open && (
-        <div className="lg:hidden bg-surface-950/95 backdrop-blur-xl border-t border-surface-700/60 animate-slide-down">
-          <div className="container-custom py-4 flex flex-col font-mono text-sm">
+        <div className="lg:hidden bg-surface-950/98 border-t-4 border-double border-ink/70 animate-fade-in">
+          <div className="container-custom py-4 flex flex-col font-mono text-xs font-semibold uppercase tracking-widest">
             {navItems.map((item) => (
-              <a key={item.id} href={`#${item.id}`} onClick={() => setOpen(false)} className="py-3 text-slate-300 hover:text-primary-300 border-b border-surface-800/60 last:border-0">
-                <span className="text-primary-400">$</span> go_to {item.label}
+              <a key={item.id} href={`#${item.id}`} onClick={() => setOpen(false)} className="py-3 text-ink-soft hover:text-primary-600 border-b hairline last:border-0">
+                <span className="text-primary-600 mr-2">/</span>{item.label}
               </a>
             ))}
-            <div className="flex items-center gap-4 pt-4">
-              {profile?.github && <a href={profile.github} className="text-slate-400 hover:text-primary-300"><FiGithub /></a>}
-              {profile?.linkedin && <a href={profile.linkedin} className="text-slate-400 hover:text-primary-300"><FiLinkedin /></a>}
-              {profile?.twitter && <a href={profile.twitter} className="text-slate-400 hover:text-primary-300"><FiTwitter /></a>}
-              {profile?.resume_url && <a href={profile.resume_url} download className="btn-primary !px-4 !py-2 text-xs ml-auto"><FiDownload /> resume</a>}
+            <div className="flex items-center gap-2 pt-4">
+              {profile?.github && <a href={profile.github} className="w-9 h-9 border border-ink/40 flex items-center justify-center text-ink-soft"><FiGithub /></a>}
+              {profile?.linkedin && <a href={profile.linkedin} className="w-9 h-9 border border-ink/40 flex items-center justify-center text-ink-soft"><FiLinkedin /></a>}
+              {profile?.twitter && <a href={profile.twitter} className="w-9 h-9 border border-ink/40 flex items-center justify-center text-ink-soft"><FiTwitter /></a>}
             </div>
           </div>
         </div>
