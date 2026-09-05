@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-surface-950 text-slate-200 font-sans antialiased;
+    background-image: radial-gradient(circle at 1px 1px, rgba(148,163,184,0.05) 1px, transparent 0);
+    background-size: 32px 32px;
+  }
+  ::selection {
+    @apply bg-primary-600 text-white;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-950;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-700 rounded-full hover:bg-surface-800;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .section-pad {
+    @apply py-20 sm:py-28;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-glow hover:from-primary-500 hover:to-primary-400 hover:-translate-y-0.5 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-surface-700/70 text-slate-200 font-semibold rounded-xl transition-all duration-300 hover:border-primary-500 hover:text-primary-300 hover:-translate-y-0.5 bg-surface-900/40;
+  }
+  .card {
+    @apply bg-surface-850/60 border border-surface-700/50 rounded-2xl backdrop-blur-sm;
+  }
+  .card-hover {
+    @apply card transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-500/50 hover:shadow-glow;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 bg-surface-900/70 border border-surface-700 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all;
+  }
+  .label-field {
+    @apply block text-sm font-medium text-slate-300 mb-2;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full bg-primary-500/10 text-primary-300 border border-primary-500/20;
+  }
+  .section-eyebrow {
+    @apply text-primary-400 text-sm font-semibold tracking-[0.2em] uppercase mb-3;
+  }
+  .section-title {
+    @apply font-display text-3xl sm:text-4xl font-bold text-white;
+  }
+  .section-subtitle {
+    @apply text-slate-400 mt-3 max-w-2xl;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 bg-clip-text text-transparent;
+  }
+  .bg-grid {
+    background-image: radial-gradient(circle at 1px 1px, rgba(148,163,184,0.08) 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+}
