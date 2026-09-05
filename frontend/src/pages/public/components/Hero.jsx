@@ -12,6 +12,17 @@ export default function Hero({ profile, settings }) {
     profile?.email && { label: 'EMAIL', href: `mailto:${profile.email}`, icon: FiMail },
   ].filter(Boolean);
 
+  const plateTitle = settings.hero_plate_title || 'Blueprint: Mohit Portfolio';
+  const plateSheet = settings.hero_plate_sheet || '01 / 13';
+  const plateHeight = settings.hero_plate_height || '1.83 m';
+  const plateStack = (settings.hero_plate_stack || 'React · Node\nSQL · Docker\nC# · AWS')
+    .split('\n').map((s) => s.trim()).filter(Boolean);
+  const plateTolerance = settings.hero_plate_tolerance || '± tolerance 0.01';
+  const plateScale = settings.hero_plate_scale || '🧭 Scale 1:1';
+  const plateDims = settings.hero_plate_dims || 'Dims in mm';
+  const plateRev = settings.hero_plate_rev || 'Rev A';
+  const showPlate = settings.show_hero_plate !== false;
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-28">
       <BlueprintBackground variant="hero" />
@@ -67,6 +78,7 @@ export default function Hero({ profile, settings }) {
           </div>
         </div>
 
+        {showPlate && (
         <div className="hidden lg:block">
           <div className="card relative shadow-card border-2 border-ink/70 p-0">
             <span className="absolute -top-2 -left-2 text-primary-500" aria-hidden><FiPlus size={14} /></span>
@@ -75,8 +87,8 @@ export default function Hero({ profile, settings }) {
             <span className="absolute -bottom-2 -right-2 text-primary-500" aria-hidden><FiPlus size={14} /></span>
 
             <div className="flex items-center justify-between px-4 py-3 bg-surface-900 border-b-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink">
-              <span>Blueprint: Mohit Portfolio</span>
-              <span className="text-ink-faint">Sheet 01 / 13</span>
+              <span className="min-w-0 truncate">{plateTitle}</span>
+              <span className="text-ink-faint shrink-0">Sheet {plateSheet}</span>
             </div>
 
             <div className="relative bg-grid px-6 py-8 h-[340px] overflow-hidden">
@@ -85,7 +97,7 @@ export default function Hero({ profile, settings }) {
               <div className="absolute inset-x-6 top-6 h-px border-t border-dashed border-ink/50" aria-hidden />
               <div className="absolute inset-x-6 bottom-6 h-px border-t border-dashed border-ink/50" aria-hidden />
 
-              <div className="absolute top-2 left-8 font-mono text-[9px] uppercase tracking-widest text-ink-faint" aria-hidden>▲ 1.83 m</div>
+              <div className="absolute top-2 left-8 font-mono text-[9px] uppercase tracking-widest text-ink-faint" aria-hidden>▲ {plateHeight}</div>
 
               <div className="relative h-full flex items-center justify-center">
                 <span className="relative font-display font-extrabold text-[130px] leading-none text-primary-500/25 select-none">
@@ -100,24 +112,25 @@ export default function Hero({ profile, settings }) {
 
                 <div className="absolute right-8 top-1/2 -translate-y-1/2 max-w-[46%] space-y-2.5">
                   <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-ink-faint">Core Stack</p>
-                  <p className="font-mono text-xs font-bold text-ink border-b border-ink/20 pb-1">React · Node</p>
-                  <p className="font-mono text-xs font-bold text-ink border-b border-ink/20 pb-1">SQL · Docker</p>
-                  <p className="font-mono text-xs font-bold text-ink border-b border-ink/20 pb-1">C# · AWS</p>
+                  {plateStack.map((line) => (
+                    <p key={line} className="font-mono text-xs font-bold text-ink border-b border-ink/20 pb-1 break-words">{line}</p>
+                  ))}
                 </div>
               </div>
 
               <div className="absolute bottom-3 right-3 font-mono text-[9px] uppercase tracking-widest text-ink-faint" aria-hidden>
-                ± tolerance 0.01
+                {plateTolerance}
               </div>
             </div>
 
             <div className="grid grid-cols-3 border-t-2 border-ink/70 font-mono text-[10px] uppercase tracking-widest text-ink-soft">
-              <div className="px-4 py-2.5 border-r border-ink/40">🧭 Scale 1:1</div>
-              <div className="px-4 py-2.5 border-r border-ink/40">Dims in mm</div>
-              <div className="px-4 py-2.5">Rev A</div>
+              <div className="px-4 py-2.5 border-r border-ink/40">{plateScale}</div>
+              <div className="px-4 py-2.5 border-r border-ink/40">{plateDims}</div>
+              <div className="px-4 py-2.5">{plateRev}</div>
             </div>
           </div>
         </div>
+        )}
       </div>
     </section>
   );

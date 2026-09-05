@@ -141,6 +141,83 @@ export default function SettingsManager() {
 
       <BrandingCard settings={settings} set={set} handleSave={handleSave} saving={saving} />
       <HeroCard settings={settings} set={set} handleSave={handleSave} saving={saving} />
+      <HeroBlueprintCard settings={settings} set={set} handleSave={handleSave} saving={saving} />
+    </div>
+  );
+}
+
+function HeroBlueprintCard({ settings, set, handleSave, saving }) {
+  const shown = settings.show_hero_plate !== false;
+  return (
+    <div className="card p-6">
+      <div className="flex flex-wrap items-center gap-3 mb-5">
+        <FiSettings className="text-primary-600 text-xl" />
+        <div>
+          <h2 className="text-lg font-bold">Hero Drafting Plate</h2>
+          <p className="text-xs text-ink-soft mt-0.5">The blueprint sheet shown beside the hero text (right side, desktop)</p>
+        </div>
+        <button
+          onClick={() => handleSave({ show_hero_plate: !shown })}
+          className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ml-auto ${
+            shown ? 'bg-primary-500/10 text-primary-600 border border-primary-500/30 hover:bg-primary-500/20' : 'bg-surface-800 text-ink-faint border border-surface-700 hover:text-ink-soft'
+          }`}
+        >
+          {shown ? <><FiEye /> Shown</> : <><FiEyeOff /> Hidden</>}
+        </button>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className="label-field">Plate Title</label>
+          <input className="input-field" value={settings.hero_plate_title || ''} onChange={(e) => set('hero_plate_title', e.target.value)} placeholder="Blueprint: Mohit Portfolio" />
+        </div>
+        <div>
+          <label className="label-field">Sheet Number (e.g. 01 / 13)</label>
+          <input className="input-field" value={settings.hero_plate_sheet || ''} onChange={(e) => set('hero_plate_sheet', e.target.value)} placeholder="01 / 13" />
+        </div>
+        <div>
+          <label className="label-field">Height Mark (e.g. 1.83 m)</label>
+          <input className="input-field" value={settings.hero_plate_height || ''} onChange={(e) => set('hero_plate_height', e.target.value)} placeholder="1.83 m" />
+        </div>
+        <div>
+          <label className="label-field">Tolerance Note</label>
+          <input className="input-field" value={settings.hero_plate_tolerance || ''} onChange={(e) => set('hero_plate_tolerance', e.target.value)} placeholder="± tolerance 0.01" />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="label-field">Core Stack (one entry per line)</label>
+          <textarea
+            className="input-field"
+            rows="4"
+            value={settings.hero_plate_stack || ''}
+            onChange={(e) => set('hero_plate_stack', e.target.value)}
+            placeholder={"React · Node\nSQL · Docker\nC# · AWS"}
+          />
+        </div>
+        <div>
+          <label className="label-field">Scale Cell</label>
+          <input className="input-field" value={settings.hero_plate_scale || ''} onChange={(e) => set('hero_plate_scale', e.target.value)} placeholder="🧭 Scale 1:1" />
+        </div>
+        <div>
+          <label className="label-field">Dims Cell</label>
+          <input className="input-field" value={settings.hero_plate_dims || ''} onChange={(e) => set('hero_plate_dims', e.target.value)} placeholder="Dims in mm" />
+        </div>
+        <div>
+          <label className="label-field">Revision Cell</label>
+          <input className="input-field" value={settings.hero_plate_rev || ''} onChange={(e) => set('hero_plate_rev', e.target.value)} placeholder="Rev A" />
+        </div>
+      </div>
+      <button className="btn-primary mt-5" disabled={saving} onClick={() => handleSave({
+        hero_plate_title: settings.hero_plate_title,
+        hero_plate_sheet: settings.hero_plate_sheet,
+        hero_plate_height: settings.hero_plate_height,
+        hero_plate_stack: settings.hero_plate_stack,
+        hero_plate_tolerance: settings.hero_plate_tolerance,
+        hero_plate_scale: settings.hero_plate_scale,
+        hero_plate_dims: settings.hero_plate_dims,
+        hero_plate_rev: settings.hero_plate_rev,
+      })}>
+        <FiSave /> {saving ? 'Saving...' : 'Save Blueprint'}
+      </button>
     </div>
   );
 }
