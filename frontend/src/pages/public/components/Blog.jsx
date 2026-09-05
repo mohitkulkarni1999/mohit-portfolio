@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { FiCalendar, FiClock, FiArrowRight } from 'react-icons/fi';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
+import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Blog({ settings }) {
   const [posts, setPosts] = useState([]);
@@ -16,8 +17,9 @@ export default function Blog({ settings }) {
   if (!posts.length) return null;
 
   return (
-    <section id="blog" className="section-pad">
-      <div className="container-custom">
+    <section id="blog" className="relative overflow-hidden section-pad">
+      <BlueprintBackground variant="alt" />
+      <div className="container-custom relative">
         <SectionHeader
           eyebrow="publications 12"
           title={settings.section_blog_heading || 'From My Blog'}

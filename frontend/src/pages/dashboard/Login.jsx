@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FiLock, FiUser, FiLogIn, FiArrowLeft, FiKey, FiPlus } from 'react-icons/fi';
 import { useAuth } from '../../context/AuthContext';
+import BlueprintBackground from '../../components/BlueprintBackground';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -28,6 +29,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen relative flex items-center justify-center px-4 overflow-hidden">
+      <BlueprintBackground variant="quiet" />
       <div className="absolute inset-0 bg-hero-grad" />
       <div className="absolute inset-0 bg-grid opacity-60" />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">

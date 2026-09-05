@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { FiCalendar, FiMapPin } from 'react-icons/fi';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
+import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Experience({ settings }) {
   const [items, setItems] = useState([]);
@@ -13,8 +14,9 @@ export default function Experience({ settings }) {
   if (!items.length) return null;
 
   return (
-    <section id="experience" className="section-pad bg-surface-900/40">
-      <div className="container-custom">
+    <section id="experience" className="relative overflow-hidden section-pad bg-surface-900/40">
+      <BlueprintBackground variant="alt" />
+      <div className="container-custom relative">
         <SectionHeader
           eyebrow="career log 07"
           title={settings.section_experience_heading || 'Work Experience'}

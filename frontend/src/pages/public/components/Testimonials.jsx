@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import api from '../../../api/client';
 import SectionHeader from '../../../components/SectionHeader';
+import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Testimonials({ settings }) {
   const [items, setItems] = useState([]);
@@ -26,8 +27,9 @@ export default function Testimonials({ settings }) {
   const next = () => setIndex((index + 1) % items.length);
 
   return (
-    <section id="testimonials" className="section-pad bg-surface-900/40">
-      <div className="container-custom">
+    <section id="testimonials" className="relative overflow-hidden section-pad bg-surface-900/40">
+      <BlueprintBackground variant="quiet" />
+      <div className="container-custom relative">
         <SectionHeader
           eyebrow="reference sheet 11"
           title={settings.section_testimonials_heading || 'What People Say'}

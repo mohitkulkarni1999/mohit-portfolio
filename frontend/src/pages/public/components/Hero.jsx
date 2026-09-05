@@ -1,5 +1,5 @@
 import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail, FiPlus } from 'react-icons/fi';
-import HeroBackground from './HeroBackground';
+import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function Hero({ profile, settings }) {
   const highlighted = settings.hero_highlight || profile?.title || 'Software Developer';
@@ -14,7 +14,7 @@ export default function Hero({ profile, settings }) {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-28">
-      <HeroBackground />
+      <BlueprintBackground variant="hero" />
 
       <div className="container-custom relative grid lg:grid-cols-2 gap-12 items-center py-16 w-full">
         <div>

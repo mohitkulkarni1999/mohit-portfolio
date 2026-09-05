@@ -1,5 +1,6 @@
 import { FiDownload, FiArrowRight, FiPlus } from 'react-icons/fi';
 import SectionHeader from '../../../components/SectionHeader';
+import BlueprintBackground from '../../../components/BlueprintBackground';
 
 export default function About({ profile, settings }) {
   const facts = [
@@ -10,8 +11,9 @@ export default function About({ profile, settings }) {
   ].filter(Boolean);
 
   return (
-    <section id="about" className="section-pad">
-      <div className="container-custom">
+    <section id="about" className="relative overflow-hidden section-pad">
+      <BlueprintBackground variant="alt" />
+      <div className="container-custom relative">
         <SectionHeader
           eyebrow="dwg. note 02"
           title={settings.section_about_heading || 'About Me'}
