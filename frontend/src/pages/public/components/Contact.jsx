@@ -45,7 +45,7 @@ export default function Contact({ profile, settings }) {
             <p className="font-mono text-[11px] uppercase tracking-widest text-ink-faint">Contact Points — CP.LIST</p>
             {contactItems.map((item, i) => (
               <div key={item.label} className="card border-2 border-ink/70 shadow-card p-0">
-                <div className="flex items-center gap-4 p-4">
+                <div className="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4">
                   <span className="relative w-10 h-10 bg-primary-500/10 border border-primary-600 text-primary-600 flex items-center justify-center shrink-0 group-hover:bg-primary-500 group-hover:text-ink transition-colors">
                     <item.icon size={16} />
                     <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-primary-500 rotate-45" aria-hidden />
@@ -62,7 +62,7 @@ export default function Contact({ profile, settings }) {
               </div>
             ))}
             <div className="card border-2 border-dashed border-primary-600/60 shadow-card p-0">
-              <div className="flex items-center gap-4 p-4">
+              <div className="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4">
                 <span className="w-10 h-10 bg-primary-500 border border-ink flex items-center justify-center text-ink shrink-0"><FiClock size={16} /></span>
                 <div>
                   <p className="text-xs text-ink-faint uppercase tracking-wider font-mono">response window</p>
@@ -80,8 +80,8 @@ export default function Contact({ profile, settings }) {
               <span className="text-primary-600 font-bold">[incoming]</span>
             </div>
 
-            <div className="p-6 sm:p-8 space-y-5">
-              <div className="grid sm:grid-cols-2 gap-5">
+            <div className="p-5 sm:p-8 space-y-4 sm:space-y-5">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
                 <div>
                   <label className="label-field"><span className="text-primary-600">□</span> name <span className="text-primary-600">*</span>:</label>
                   <input name="name" value={form.name} onChange={handleChange} className="input-field" placeholder="John Doe" />

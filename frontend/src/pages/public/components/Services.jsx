@@ -22,14 +22,14 @@ export default function Services({ settings }) {
           subtitle={settings.section_services_subtitle}
         />
 
-        <div className="mt-10 sm:mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-10 sm:mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {services.map((service, i) => (
             <div key={service.id} className="card border-2 border-ink/70 shadow-card p-0 group flex flex-col">
-              <div className="flex items-center justify-between px-5 py-3 bg-surface-900 border-b-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink-faint">
+              <div className="flex items-center justify-between px-5 py-3 bg-surface-900 border-b-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink-faint gap-2">
                 <span>Work Order W-{String(i + 1).padStart(2, '0')}</span>
-                <span className="text-primary-600 font-bold">{String(i + 1).padStart(2, '0')}/{String(services.length).padStart(2, '0')}</span>
+                <span className="text-primary-600 font-bold shrink-0">{String(i + 1).padStart(2, '0')}/{String(services.length).padStart(2, '0')}</span>
               </div>
-              <div className="p-6 flex flex-col flex-1">
+              <div className="p-5 sm:p-6 flex flex-col flex-1">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="inline-flex w-11 h-11 bg-primary-500 border border-ink text-ink items-center justify-center shadow-glow shrink-0 group-hover:-translate-y-0.5 transition-transform">
                     <Icon name={service.icon} size={20} />
@@ -51,7 +51,7 @@ export default function Services({ settings }) {
                   </ul>
                 )}
               </div>
-              <div className="flex items-center justify-between px-6 py-3 bg-surface-900 border-t-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink-faint gap-2 min-w-0">
+              <div className="flex items-center justify-between px-4 sm:px-6 py-3 bg-surface-900 border-t-2 border-ink/70 font-mono text-[11px] uppercase tracking-widest text-ink-faint gap-2 min-w-0">
                 <span className="truncate">{service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}</span>
                 <span className="whitespace-nowrap text-primary-600 font-bold">status: open</span>
               </div>
